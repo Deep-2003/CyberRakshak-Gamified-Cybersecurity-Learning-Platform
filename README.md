@@ -110,11 +110,13 @@ The Scam Detection Model is a key component of CyberRakshak.
 
 ## 👨‍💻 Team Structure
 
-Name | Role | Responsibility |
--------|------|--------------|
-Deepanshu Singh| Cybersecurity and Full Stack | Development & integratio,Attack simulation & threat analysis |
-Ayush Kumar | AI/ML | Scam Detection Model |
-Kriti Dwivedi | Cybersecurity | Attack simulation |
+## 👨‍💻 Team Structure
+
+| Name | Role | Responsibility |
+|------|------|---------------|
+| Deepanshu Singh (Team Leader) | Cybersecurity & Full Stack Developer | Project coordination, frontend-backend development, basic cybersecurity implementation, integration of all modules |
+| Kriti Dwivedi | Cybersecurity |  Attack simulation, threat analysis, designing real-world cyber attack scenarios |
+| Ayush Kumar | AI/ML Engineer & System Developer | Scam Detection Model (NLP + ML), data processing, backend logic, overall system functionality |
 
 ---
 
