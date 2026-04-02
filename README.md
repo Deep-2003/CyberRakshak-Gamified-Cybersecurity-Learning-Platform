@@ -155,7 +155,7 @@ _Add project video link here_
 ## ⚙️ Installation
 
 ```bash
-git clone https://github.com/your-username/CyberRakshak.git
+git clone https://github.com/Deep-2003/CyberRakshak-Gamified-Cybersecurity-Learning-Platform.git
 cd CyberRakshak
 npm install
 npm start
