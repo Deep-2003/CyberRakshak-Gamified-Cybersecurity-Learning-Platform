@@ -1,0 +1,102 @@
+[
+  {
+    "question": "Should you share OTP with a bank employee?",
+    "options": ["Yes", "No"],
+    "answer": "No"
+  },
+  {
+    "question": "What should you check before clicking a link?",
+    "options": ["URL", "Wallpaper", "Battery"],
+    "answer": "URL"
+  },
+  {
+    "question": "Is a guaranteed investment return always safe?",
+    "options": ["Yes", "No"],
+    "answer": "No"
+  },
+  {
+    "question": "What does OTP stand for?",
+    "options": ["One Time Password", "Online Transfer Password", "Official Transaction Pass"],
+    "answer": "One Time Password"
+  },
+  {
+    "question": "Should you scan QR codes from unknown sources?",
+    "options": ["Yes", "No"],
+    "answer": "No"
+  },
+  {
+    "question": "What is phishing?",
+    "options": ["A cyber attack to steal information", "Fishing in rivers", "A banking service"],
+    "answer": "A cyber attack to steal information"
+  },
+  {
+    "question": "Should you use the same password everywhere?",
+    "options": ["Yes", "No"],
+    "answer": "No"
+  },
+  {
+    "question": "What is the safest way to secure an account?",
+    "options": ["2FA", "Sharing passwords", "Disabling security"],
+    "answer": "2FA"
+  },
+  {
+    "question": "Can banks ask for your OTP over the phone?",
+    "options": ["Yes", "No"],
+    "answer": "No"
+  },
+  {
+    "question": "What should you do if you receive a suspicious message?",
+    "options": ["Ignore/Report", "Reply Immediately", "Share Details"],
+    "answer": "Ignore/Report"
+  },
+  {
+    "question": "Which is a common scam tactic?",
+    "options": ["Urgency", "Patience", "Transparency"],
+    "answer": "Urgency"
+  },
+  {
+    "question": "Should you trust unexpected lottery winnings?",
+    "options": ["Yes", "No"],
+    "answer": "No"
+  },
+  {
+    "question": "What should you verify in an email?",
+    "options": ["Sender Address", "Font Style", "Background Color"],
+    "answer": "Sender Address"
+  },
+  {
+    "question": "Can a QR code steal money through fake UPI requests?",
+    "options": ["Yes", "No"],
+    "answer": "Yes"
+  },
+  {
+    "question": "What is social engineering?",
+    "options": ["Manipulating people", "Coding", "Network Design"],
+    "answer": "Manipulating people"
+  },
+  {
+    "question": "Should you click shortened URLs from strangers?",
+    "options": ["Yes", "No"],
+    "answer": "No"
+  },
+  {
+    "question": "What is a strong password?",
+    "options": ["Complex and Unique", "123456", "password"],
+    "answer": "Complex and Unique"
+  },
+  {
+    "question": "Should software updates be ignored?",
+    "options": ["Yes", "No"],
+    "answer": "No"
+  },
+  {
+    "question": "What should you do if a scammer gets your OTP?",
+    "options": ["Report Immediately", "Do Nothing", "Share More Details"],
+    "answer": "Report Immediately"
+  },
+  {
+    "question": "What is the national cybercrime helpline number in India?",
+    "options": ["1930", "100", "112"],
+    "answer": "1930"
+  }
+]

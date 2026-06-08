@@ -1,0 +1,38 @@
+[
+  {
+    "id": 1,
+    "name": "Cyber Beginner",
+    "description": "Completed first quiz",
+    "points": 50
+  },
+  {
+    "id": 2,
+    "name": "Scam Spotter",
+    "description": "Correctly identified 10 scam messages",
+    "points": 100
+  },
+  {
+    "id": 3,
+    "name": "Cyber Learner",
+    "description": "Completed 5 awareness modules",
+    "points": 150
+  },
+  {
+    "id": 4,
+    "name": "Threat Hunter",
+    "description": "Detected 25 scams",
+    "points": 250
+  },
+  {
+    "id": 5,
+    "name": "Cyber Guardian",
+    "description": "Achieved advanced awareness level",
+    "points": 400
+  },
+  {
+    "id": 6,
+    "name": "Cyber Warrior",
+    "description": "Completed all modules",
+    "points": 500
+  }
+]

@@ -1,0 +1,21 @@
+Test_ID,Message,Expected_Result,Category
+TC001,Share OTP immediately to verify account,Scam,OTP Scam
+TC002,Congratulations you won ₹20 lakh,Scam,Lottery Scam
+TC003,Your bank account will be blocked verify now,Scam,Banking Scam
+TC004,Accept payment request to receive refund,Scam,UPI Fraud
+TC005,Pay registration fee to secure job,Scam,Job Scam
+TC006,Double your money in 7 days,Scam,Investment Scam
+TC007,Click link to update password,Scam,Phishing
+TC008,Meeting scheduled tomorrow at 10 AM,Safe,Safe
+TC009,Your train ticket is confirmed,Safe,Safe
+TC010,Electricity bill paid successfully,Safe,Safe
+TC011,Share security code immediately,Scam,OTP Scam
+TC012,Lucky winner claim reward now,Scam,Lottery Scam
+TC013,KYC verification pending update now,Scam,Banking Scam
+TC014,Scan QR code to receive cashback,Scam,UPI Fraud
+TC015,Work from home earn ₹50000 weekly,Scam,Job Scam
+TC016,Guaranteed investment returns,Scam,Investment Scam
+TC017,Login immediately to secure account,Scam,Phishing
+TC018,Project review meeting at 2 PM,Safe,Safe
+TC019,Order delivered successfully,Safe,Safe
+TC020,Thank you for shopping with us,Safe,Safe
