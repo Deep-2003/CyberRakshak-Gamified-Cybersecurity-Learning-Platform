@@ -1,0 +1,51 @@
+message,label,category
+"Your OTP 482913 is required to prevent account suspension. Share it immediately with our verification officer.",scam,otp_theft
+"Dear customer, confirm OTP 771204 to receive your pending cashback reward today.",scam,otp_theft
+"Bank security alert: Unauthorized login detected. Reply with OTP 390118 to secure your account.",scam,otp_theft
+"Your KYC update failed. Send OTP 845627 now or your account will be blocked.",scam,otp_theft
+"Congratulations! You won a shopping voucher. Verify ownership by sharing OTP 512884.",scam,otp_theft
+"Urgent: Your debit card will be deactivated in 30 minutes. Provide OTP 604271 to continue service.",scam,otp_theft
+"Courier delivery failed. Confirm OTP 738592 to reschedule your package.",scam,otp_theft
+"Your mobile number is being transferred. Share OTP 126543 if this was not requested.",scam,otp_theft
+"Income tax refund of Rs 8,450 is pending. Verify OTP 941327 to receive payment.",scam,otp_theft
+"Suspicious transaction detected. Tell our agent OTP 287601 to cancel it immediately.",scam,otp_theft
+"Your UPI account requires verification. Share OTP 453198 to avoid restrictions.",scam,otp_theft
+"Exclusive festival offer unlocked. Confirm OTP 681250 to claim your prize.",scam,otp_theft
+"Your electricity connection is scheduled for disconnection. Send OTP 904176 to stop it.",scam,otp_theft
+"Customer support here. Please provide OTP 175492 so we can resolve your complaint.",scam,otp_theft
+"Your account has been shortlisted for a personal loan. Verify with OTP 760381.",scam,otp_theft
+"Netflix subscription renewal failed. Confirm OTP 839521 to prevent cancellation.",scam,otp_theft
+"Security team alert: Device change detected. Share OTP 214890 for identity confirmation.",scam,otp_theft
+"Claim your free smartphone today. Verify eligibility by sending OTP 503716.",scam,otp_theft
+"Your FASTag wallet is suspended. Provide OTP 428975 to reactivate instantly.",scam,otp_theft
+"Dear user, OTP 697231 is needed to receive your reward points transfer.",scam,otp_theft
+"Lottery winnings are waiting. Confirm OTP 310847 to process your payout.",scam,otp_theft
+"Account verification pending. Share OTP 589132 within 5 minutes to avoid lockout.",scam,otp_theft
+"Your wallet balance update requires OTP 742615. Reply now.",scam,otp_theft
+"Courier customs charges cleared. Verify OTP 218763 to release shipment.",scam,otp_theft
+"Employment bonus approved. Provide OTP 956028 to receive funds.",scam,otp_theft
+"Your social media account recovery request is being processed. Share OTP 184357 to continue.",scam,otp_theft
+"Government subsidy payment is ready. Verify OTP 607425 to credit your account.",scam,otp_theft
+"Urgent fraud prevention call scheduled. Tell us OTP 821694 to verify ownership.",scam,otp_theft
+"Recharge cashback offer expires soon. Send OTP 493710 to activate.",scam,otp_theft
+"Your account is under review. Confirm OTP 376541 immediately.",scam,otp_theft
+"OTP 654321 is your verification code. Do not share it with anyone.",legitimate,banking
+"Use OTP 183902 to complete your login. This code expires in 10 minutes.",legitimate,authentication
+"Your one-time password is 472618 for transaction approval. Never disclose this code.",legitimate,banking
+"OTP 298145 is required to verify your mobile number. Valid for 5 minutes.",legitimate,authentication
+"Code 817264 is your OTP for password reset. Do not share it with anyone.",legitimate,password_reset
+"Your verification code is 541890. Enter this OTP in the app to continue.",legitimate,authentication
+"OTP 709513 for account sign-in. If you did not request this, ignore the message.",legitimate,authentication
+"Use OTP 326784 to authorize your payment of Rs 1,250.",legitimate,payment
+"Your secure login code is 902145. Never share this OTP.",legitimate,authentication
+"Enter OTP 118376 to verify your email address.",legitimate,verification
+"OTP 765902 is valid for 3 minutes. Do not disclose it to anyone.",legitimate,security
+"Transaction OTP: 451237. Use only on the official banking website.",legitimate,banking
+"Your one-time code is 692581 for account recovery.",legitimate,password_reset
+"OTP 873410 generated for device registration. Do not share it.",legitimate,device_verification
+"Use code 504821 to confirm your online purchase.",legitimate,payment
+"Your verification OTP is 237694. This code expires shortly.",legitimate,verification
+"OTP 940172 requested for secure access. Ignore if not initiated by you.",legitimate,security
+"Enter OTP 315628 to complete registration.",legitimate,registration
+"Authentication code 786451 is valid for one login session only.",legitimate,authentication
+"OTP 529874 is required to confirm your transaction. Never share this code.",legitimate,banking
