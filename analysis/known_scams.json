@@ -1,0 +1,29 @@
+[
+  {
+    "type": "OTP Scam",
+    "keywords": [
+      "otp",
+      "verification",
+      "security code",
+      "urgent",
+      "account"
+    ],
+    "trigger": "Fear + Urgency",
+    "risk": "High",
+    "warning": "Never share OTP with anyone."
+  },
+
+  {
+    "type": "Lottery Scam",
+    "keywords": [
+      "winner",
+      "prize",
+      "reward",
+      "lottery",
+      "cash"
+    ],
+    "trigger": "Greed",
+    "risk": "Medium",
+    "warning": "Unexpected rewards are usually scams."
+  }
+]
