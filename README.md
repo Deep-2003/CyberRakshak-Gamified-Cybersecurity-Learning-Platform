@@ -149,7 +149,7 @@ The Scam Detection Model is a key component of CyberRakshak.
 <table>
   <tr>
     <td align="center">
-      <img src="images/scam.png" width="400" height="225">
+      <img src="images/scam.png" width="400" height="350">
     </td>
     <td align="center">
       <img src="images/ham.png" width="400">
