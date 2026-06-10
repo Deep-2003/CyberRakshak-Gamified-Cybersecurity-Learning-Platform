@@ -143,9 +143,22 @@ The Scam Detection Model is a key component of CyberRakshak.
 ---
 
 ## 📸 Screenshots
-_Add screenshots here_
 
----
+<h3 align="center">Word Clouds</h3>
+
+<table>
+  <tr>
+    <td align="center">
+      <img src="images/scam.png" width="400" height="350">
+    </td>
+    <td align="center">
+      <img src="images/ham.png" width="400">
+    </td>
+  </tr>
+</table>
+
+<h3>Likelihood based on message size </h3>
+<img src="images/likelihood.png" width="400">
 
 ## 🎥 Project Video
 _Add project video link here_
