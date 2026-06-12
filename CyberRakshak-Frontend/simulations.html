@@ -16,12 +16,12 @@
             <span class="title-font text-2xl font-bold neon-green">CYBERRAKSHAK</span>
         </a>
         <div class="flex gap-8 text-sm font-medium">
-            <a href="dashboard.html">Dashboard</a>
-            <a href="ai-detector.html">AI Detector</a>
+            <a href="dashboard.html" class="hover:text-emerald-400 transition">Dashboard</a>
+            <a href="ai-detector.html" class="hover:text-emerald-400 transition">AI Detector</a>
             <a href="simulations.html" class="text-emerald-400">Simulations</a>
-            <a href="leaderboard.html">Leaderboard</a>
+            <a href="leaderboard.html" class="hover:text-emerald-400 transition">Leaderboard</a>
         </div>
-        <div onclick="logout()" class="cursor-pointer w-9 h-9 bg-zinc-700 hover:bg-red-500/20 rounded-2xl flex items-center justify-center">👤</div>
+        <div onclick="logout()" class="cursor-pointer w-9 h-9 bg-zinc-700 hover:bg-red-500/20 rounded-2xl flex items-center justify-center transition">👤</div>
     </nav>
 
     <div class="max-w-6xl mx-auto px-6 py-12">
@@ -31,30 +31,35 @@
                 <p class="text-xl text-zinc-400">Train against real threats. Earn XP. Become a Cyber Rakshak.</p>
             </div>
             <div class="text-right">
-                <div class="text-emerald-400 text-sm">YOUR STREAK 🔥</div>
-                <div id="streak" class="text-4xl font-bold">7 days</div>
+                <div class="text-emerald-400 text-sm tracking-wider">YOUR STREAK 🔥</div>
+                <div id="streak" class="text-4xl font-bold text-amber-500">Loading...</div>
             </div>
         </div>
 
         <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6" id="simulations-grid"></div>
 
-        <!-- Active Simulation -->
-        <div id="simulation-area" class="hidden mt-12 bg-zinc-900 rounded-3xl p-10 border border-emerald-500/30">
-            <button onclick="closeSimulation()" class="float-right text-3xl text-zinc-400 hover:text-white">✕</button>
+        <div id="simulation-area" class="hidden mt-12 bg-zinc-900 rounded-3xl p-10 border border-emerald-500/30 shadow-2xl transition-all duration-300">
+            <button onclick="closeSimulation()" class="float-right text-3xl text-zinc-400 hover:text-white transition">✕</button>
+            <div id="sim-badge" class="inline-block px-3 py-1 bg-zinc-800 rounded-full text-xs font-semibold mb-3"></div>
             <h3 id="sim-title" class="text-3xl font-bold mb-4"></h3>
             <p id="sim-description" class="text-zinc-400 mb-8"></p>
-            <div id="sim-content" class="min-h-[320px]"></div>
+            
+            <div id="sim-content" class="min-h-[220px]"></div>
+            
+            <div id="sim-feedback" class="mt-6 hidden p-4 rounded-xl text-center font-medium"></div>
 
             <div class="mt-10 flex gap-4">
-                <button onclick="completeSimulation()" class="flex-1 py-5 bg-emerald-500 hover:bg-emerald-400 text-black font-bold rounded-3xl transition">✅ Complete & Earn XP</button>
-                <button onclick="closeSimulation()" class="flex-1 py-5 border border-zinc-600 hover:bg-zinc-800 rounded-3xl">Cancel</button>
+                <button id="complete-btn" onclick="completeSimulation()" class="hidden flex-1 py-5 bg-emerald-500 hover:bg-emerald-400 text-black font-bold rounded-3xl transition duration-200 shadow-lg shadow-emerald-500/20">
+                    ✅ Claim Rewards & Complete
+                </button>
+                <button onclick="closeSimulation()" class="flex-1 py-5 border border-zinc-600 hover:bg-zinc-800 rounded-3xl transition duration-200">Close Window</button>
             </div>
         </div>
     </div>
 
     <script src="js/app.js"></script>
     <script>
-        // Enhanced Simulations based on repo themes (Phishing, OTP, Loan Scams, etc.)
+        // Array mirroring your platform layout matrix
         const simulations = [
             {
                 id: 1,
@@ -64,11 +69,14 @@
                 xp: 120,
                 description: "Spot the fake bank email and avoid clicking malicious links.",
                 content: `
-                    <div class="bg-zinc-800 rounded-2xl p-8">
-                        <p class="mb-6">"Urgent: Your SBI account is locked. Verify now: <span class="text-rose-400">sbi-security-login.com</span>"</p>
+                    <div class="bg-zinc-800 rounded-2xl p-8 border border-zinc-700">
+                        <p class="mb-6 font-mono text-zinc-300 p-4 bg-zinc-900 rounded-xl border border-zinc-800">
+                            <span class="text-zinc-500">From: secure@sbi-updates.net</span><br>
+                            "Urgent: Your SBI account is locked due to suspicious activity. Verify credentials immediately at: <span class="text-rose-400 underline cursor-pointer">sbi-security-login.com</span>"
+                        </p>
                         <div class="grid grid-cols-2 gap-4">
-                            <button onclick="makeChoice(1, false)" class="py-5 border border-rose-500 text-rose-400 rounded-2xl hover:bg-rose-500/10">Click Link</button>
-                            <button onclick="makeChoice(1, true)" class="py-5 bg-emerald-500 text-black rounded-2xl">Report as Scam</button>
+                            <button onclick="makeChoice(1, false)" class="py-4 border border-rose-500 text-rose-400 rounded-2xl hover:bg-rose-500/10 transition">Click Link</button>
+                            <button onclick="makeChoice(1, true)" class="py-4 bg-emerald-500 text-black font-bold rounded-2xl hover:bg-emerald-400 transition">Report as Scam</button>
                         </div>
                     </div>
                 `
@@ -79,13 +87,13 @@
                 icon: "📱",
                 difficulty: "High",
                 xp: 150,
-                description: "Bank executive asks for your OTP. What do you do?",
+                description: "Bank executive asks for your OTP over the phone. What do you do?",
                 content: `
-                    <div class="bg-zinc-800 rounded-2xl p-8 text-center">
-                        <p class="text-xl">"Hello Sir, this is HDFC Bank. Share the OTP we sent for security check."</p>
-                        <div class="mt-10 grid grid-cols-2 gap-4">
-                            <button onclick="makeChoice(2, false)" class="py-5 border border-rose-500 text-rose-400 rounded-2xl">Share OTP</button>
-                            <button onclick="makeChoice(2, true)" class="py-5 bg-emerald-500 text-black rounded-2xl">Refuse & Hang Up</button>
+                    <div class="bg-zinc-800 rounded-2xl p-8 text-center border border-zinc-700">
+                        <p class="text-xl italic text-zinc-300">"Hello Sir, this is HDFC Central Operations. We detected a threat. Please read aloud the 6-digit verification code we just sent your device to secure your fund."</p>
+                        <div class="mt-8 grid grid-cols-2 gap-4">
+                            <button onclick="makeChoice(2, false)" class="py-4 border border-rose-500 text-rose-400 rounded-2xl hover:bg-rose-500/10 transition">Share OTP</button>
+                            <button onclick="makeChoice(2, true)" class="py-4 bg-emerald-500 text-black font-bold rounded-2xl hover:bg-emerald-400 transition">Refuse & Hang Up</button>
                         </div>
                     </div>
                 `
@@ -96,13 +104,13 @@
                 icon: "💰",
                 difficulty: "Medium",
                 xp: 100,
-                description: "Instant loan offer with too-good-to-be-true terms.",
+                description: "Instant loan offer sent via SMS with suspicious terms.",
                 content: `
-                    <div class="bg-zinc-800 rounded-2xl p-8">
-                        <p>"Get ₹5 Lakh loan in 5 minutes! Just pay ₹499 processing fee."</p>
-                        <div class="mt-8 flex gap-4">
-                            <button onclick="makeChoice(3, false)" class="flex-1 py-5 border border-rose-500 text-rose-400 rounded-2xl">Pay Fee</button>
-                            <button onclick="makeChoice(3, true)" class="flex-1 py-5 bg-emerald-500 text-black rounded-2xl">Ignore</button>
+                    <div class="bg-zinc-800 rounded-2xl p-8 border border-zinc-700">
+                        <p class="mb-6 text-zinc-300 font-mono p-4 bg-zinc-900 rounded-xl">"Congratulations! You qualify for pre-approved ₹5 Lakh instant credit! Zero documentation required. Pay minor processing setup fee of ₹499 to dispatch funds."</p>
+                        <div class="flex gap-4">
+                            <button onclick="makeChoice(3, false)" class="flex-1 py-4 border border-rose-500 text-rose-400 rounded-2xl hover:bg-rose-500/10 transition">Pay Upfront Fee</button>
+                            <button onclick="makeChoice(3, true)" class="flex-1 py-4 bg-emerald-500 text-black font-bold rounded-2xl hover:bg-emerald-400 transition">Block Number</button>
                         </div>
                     </div>
                 `
@@ -113,83 +121,162 @@
                 icon: "🔐",
                 difficulty: "Easy",
                 xp: 80,
-                description: "Create a strong password and test it.",
+                description: "Construct a resilient password string to repel dictionary exploits.",
                 content: `
-                    <div class="max-w-md mx-auto">
-                        <input id="passwordInput" type="password" placeholder="Create strong password" class="w-full bg-zinc-800 border border-zinc-700 rounded-2xl px-6 py-4 text-lg mb-6">
-                        <button onclick="checkPassword()" class="w-full py-5 bg-emerald-500 text-black font-bold rounded-3xl">Test Strength</button>
-                        <div id="passwordResult" class="mt-6 text-center"></div>
+                    <div class="max-w-md mx-auto bg-zinc-800 p-6 rounded-2xl border border-zinc-700">
+                        <input id="passwordInput" type="text" placeholder="Type a secure password..." class="w-full bg-zinc-900 border border-zinc-700 rounded-2xl px-6 py-4 text-emerald-400 font-mono text-lg mb-4 focus:outline-none focus:border-emerald-500">
+                        <button onclick="checkPassword()" class="w-full py-4 bg-emerald-500 text-black font-bold rounded-2xl hover:bg-emerald-400 transition">Evaluate Strength</button>
                     </div>
                 `
             }
         ];
 
-        function loadSimulations() {
-            const grid = document.getElementById('simulations-grid');
-            grid.innerHTML = simulations.map(sim => `
-                <div onclick="startSimulation(${sim.id})" class="bg-zinc-900 border border-zinc-700 hover:border-emerald-500 rounded-3xl p-8 cursor-pointer card-hover group">
-                    <div class="text-6xl mb-6 transition-transform group-hover:scale-110">${sim.icon}</div>
-                    <h3 class="font-bold text-2xl mb-2">${sim.title}</h3>
-                    <p class="text-zinc-400 text-sm mb-4">${sim.description}</p>
-                    <div class="flex justify-between text-xs">
-                        <span class="px-3 py-1 bg-zinc-800 rounded-full">${sim.difficulty}</span>
-                        <span class="text-emerald-400">+${sim.xp} XP</span>
-                    </div>
-                </div>
-            `).join('');
+        let currentSim = null;
+        let completedSimulationsList = []; // Track database completions on runtime client-side
+
+        // 1. Database Hook: Fetch User Profile and Data Metrics
+        async function fetchUserProfile() {
+            try {
+                // Adjust endpoint string based on your exact node/express/firebase layout config
+                const response = await fetch('/api/user/profile', {
+                    method: 'GET',
+                    headers: { 'Authorization': `Bearer ${localStorage.getItem('token')}` }
+                });
+                
+                if (response.ok) {
+                    const data = await response.json();
+                    document.getElementById('streak').textContent = `${data.streak || 0} Days`;
+                    completedSimulationsList = data.completedSimulations || [];
+                } else {
+                    // Fallback configuration if unauthenticated or sandbox environment
+                    document.getElementById('streak').textContent = "7 Days";
+                }
+            } catch (err) {
+                console.warn("Database connection offline. Emulating local state configurations.");
+                document.getElementById('streak').textContent = "7 Days";
+            }
+            loadSimulations();
         }
 
-        let currentSim = null;
+        // 2. Render Grid with Dynamic Completion Flags
+        function loadSimulations() {
+            const grid = document.getElementById('simulations-grid');
+            grid.innerHTML = simulations.map(sim => {
+                const isCleared = completedSimulationsList.includes(sim.id);
+                return `
+                    <div onclick="startSimulation(${sim.id})" class="relative bg-zinc-900 border ${isCleared ? 'border-emerald-500/60 bg-emerald-950/10' : 'border-zinc-800'} hover:border-emerald-500 rounded-3xl p-8 cursor-pointer transition-all duration-300 transform hover:-translate-y-1 group">
+                        ${isCleared ? '<div class="absolute top-4 right-4 text-emerald-400 bg-emerald-900/30 px-2 py-0.5 rounded-md text-xs font-bold border border-emerald-500/40">COMPLETED ✅</div>' : ''}
+                        <div class="text-6xl mb-6 transition-transform group-hover:scale-110">${sim.icon}</div>
+                        <h3 class="font-bold text-2xl mb-2">${sim.title}</h3>
+                        <p class="text-zinc-400 text-sm mb-4">${sim.description}</p>
+                        <div class="flex justify-between items-center text-xs mt-auto pt-2">
+                            <span class="px-3 py-1 bg-zinc-800 rounded-full text-zinc-300 font-medium">${sim.difficulty}</span>
+                            <span class="text-emerald-400 font-bold">+${sim.xp} XP</span>
+                        </div>
+                    </div>
+                `;
+            }).join('');
+        }
 
+        // 3. Initiate Simulation
         function startSimulation(id) {
             currentSim = simulations.find(s => s.id === id);
             if (!currentSim) return;
 
-            document.getElementById('simulation-area').classList.remove('hidden');
+            const area = document.getElementById('simulation-area');
+            area.classList.remove('hidden');
+            
+            document.getElementById('sim-badge').textContent = `${currentSim.difficulty} • +${currentSim.xp} XP`;
             document.getElementById('sim-title').textContent = currentSim.title;
             document.getElementById('sim-description').textContent = currentSim.description;
             document.getElementById('sim-content').innerHTML = currentSim.content;
+            
+            // Clear prior contextual runs
+            const feedback = document.getElementById('sim-feedback');
+            feedback.classList.add('hidden');
+            document.getElementById('complete-btn').classList.add('hidden');
+            
+            area.scrollIntoView({ behavior: 'smooth' });
         }
 
         function closeSimulation() {
             document.getElementById('simulation-area').classList.add('hidden');
         }
 
+        // 4. Non-Blocking Dynamic Interactive Choice Mechanics
         function makeChoice(simId, isCorrect) {
+            const feedback = document.getElementById('sim-feedback');
+            feedback.classList.remove('hidden', 'bg-rose-500/20', 'text-rose-400', 'bg-emerald-500/20', 'text-emerald-400');
+            
             if (isCorrect) {
-                alert("✅ Outstanding! You made the right security decision.");
-                claimXP();
+                feedback.classList.add('bg-emerald-500/20', 'text-emerald-400');
+                feedback.innerHTML = "🎯 <strong>Outstanding!</strong> You successfully identified the risk vectors and defended your data context.";
+                document.getElementById('complete-btn').classList.remove('hidden');
             } else {
-                alert("❌ This is a common scam tactic. Stay alert!");
+                feedback.classList.add('bg-rose-500/20', 'text-rose-400');
+                feedback.innerHTML = "⚠️ <strong>Exploitation Hazard:</strong> Attackers frequently exploit this exact pathway. Analyze the structural vectors and retry!";
+                document.getElementById('complete-btn').classList.add('hidden');
             }
-            setTimeout(closeSimulation, 1200);
         }
 
+        // 5. Dynamic Password Evaluation Matrix
         function checkPassword() {
             const pwd = document.getElementById('passwordInput').value;
-            const result = document.getElementById('passwordResult');
+            const feedback = document.getElementById('sim-feedback');
+            feedback.classList.remove('hidden', 'bg-rose-500/20', 'text-rose-400', 'bg-emerald-500/20', 'text-emerald-400', 'bg-amber-500/20', 'text-amber-400');
+            
             if (!pwd) return;
 
             if (pwd.length >= 12 && /[A-Z]/.test(pwd) && /[0-9]/.test(pwd) && /[!@#$]/.test(pwd)) {
-                result.innerHTML = `<p class="text-emerald-400 font-bold text-xl">🔥 Excellent Strong Password! +80 XP</p>`;
-                claimXP();
+                feedback.classList.add('bg-emerald-500/20', 'text-emerald-400');
+                feedback.innerHTML = "🔥 <strong>Cryptographically Secure!</strong> Length, character variance, and structures are adequate.";
+                document.getElementById('complete-btn').classList.remove('hidden');
             } else if (pwd.length >= 8) {
-                result.innerHTML = `<p class="text-amber-400">Good, but add symbols & numbers for maximum security.</p>`;
+                feedback.classList.add('bg-amber-500/20', 'text-amber-400');
+                feedback.innerHTML = "⚠️ <strong>Moderate Entropy:</strong> Passwords meet length guidelines but require symbols or casing variances to withstand automated attacks.";
+                document.getElementById('complete-btn').classList.add('hidden');
             } else {
-                result.innerHTML = `<p class="text-rose-400">Too weak! Use longer password with variety.</p>`;
+                feedback.classList.add('bg-rose-500/20', 'text-rose-400');
+                feedback.innerHTML = "❌ <strong>Critical Weakness:</strong> Insufficient character length. Easily breached with simple dictionaries.";
+                document.getElementById('complete-btn').classList.add('hidden');
             }
         }
 
-        function completeSimulation() {
-            if (currentSim) {
-                alert(`🎉 Simulation Completed! You earned +${currentSim.xp} XP`);
-                claimXP();
+        // 6. Database Hook: Dispatch Secure Experience / Matrix Progress Points to Backend
+        async function completeSimulation() {
+            if (!currentSim) return;
+
+            try {
+                const response = await fetch('/api/user/add-xp', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'Authorization': `Bearer ${localStorage.getItem('token')}` // Session reference validation token
+                    },
+                    body: JSON.stringify({
+                        simulationId: currentSim.id,
+                        xpEarned: currentSim.xp
+                    })
+                });
+
+                if (response.ok) {
+                    console.log(`Saved dynamic payload data target tracking points: +${currentSim.xp} XP`);
+                }
+            } catch (error) {
+                console.error("Progress sync interrupted. Storing actions locally.", error);
             }
+
+            // Client-side fallback update simulation grid tracking array context execution
+            if (!completedSimulationsList.includes(currentSim.id)) {
+                completedSimulationsList.push(currentSim.id);
+            }
+            
+            loadSimulations();
             closeSimulation();
         }
 
-        // Auto load on page open
-        window.onload = loadSimulations;
+        // Initialize setup triggers
+        window.onload = fetchUserProfile;
     </script>
 </body>
 </html>
