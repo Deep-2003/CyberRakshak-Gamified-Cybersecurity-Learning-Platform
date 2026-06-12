@@ -1,28 +1,121 @@
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap');
+/* ==========================================================================
+   CYBERRAKSHAK GLOBAL SYSTEM STYLESHEET
+   Implements custom neon typography filters, animations, and aesthetic curves
+   ========================================================================== */
 
-body { font-family: 'Inter', system_ui, sans-serif; }
-.title-font { font-family: 'Space Grotesk', sans-serif; }
+/* --- Import System Display Fonts --- */
+@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;600;800&family=Plus+Jakarta+Sans:wght@300;400;500;700&display=swap');
 
-.neon-green { text-shadow: 0 0 20px #22d3b3, 0 0 40px #22d3b3; }
-.card-hover:hover { transform: translateY(-15px) scale(1.04); box-shadow: 0 30px 70px -15px rgb(16 185 129 / 0.4); }
-
-.hero-bg {
-    background: linear-gradient(135deg, #0a0a0a 0%, #1a1a2e 50%, #0f172a 100%);
-    position: relative; overflow: hidden;
+/* --- Root Styling Scope Overrides --- */
+:root {
+    --cyber-black: #050507;
+    --neon-emerald: #10b981;
+    --neon-glow: rgba(16, 185, 129, 0.25);
+    --dark-surface: #09090b;
 }
-.matrix {
-    position: absolute; top: 0; left: 0; width: 100%; height: 100%;
-    background: linear-gradient(rgba(34,211,151,0.12) 1px, transparent 1px),
-                linear-gradient(90deg, rgba(34,211,151,0.12) 1px, transparent 1px);
-    background-size: 45px 45px; animation: matrixMove 18s linear infinite; opacity: 0.75;
-}
-@keyframes matrixMove { 0% { transform: translateY(0); } 100% { transform: translateY(-180px); } }
 
-/* Modal Styles */
-.modal {
-    animation: modalPop 0.4s ease-out;
+body {
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    background-color: var(--cyber-black);
+    overflow-x: hidden;
+    scroll-behavior: smooth;
 }
-@keyframes modalPop {
-    from { opacity: 0; transform: scale(0.8) translateY(30px); }
-    to { opacity: 1; transform: scale(1) translateY(0); }
+
+/* --- Typography Hierarchy Classes --- */
+.title-font {
+    font-family: 'Orbitron', sans-serif;
+    letter-spacing: 0.05em;
+}
+
+/* --- Futuristic Neon Glow Engine --- */
+.neon-green {
+    font-family: 'Orbitron', sans-serif;
+    color: #ffffff;
+    text-shadow: 
+        0 0 4px #fff,
+        0 0 10px var(--neon-emerald),
+        0 0 20px var(--neon-emerald),
+        0 0 40px var(--neon-emerald);
+    animation: textPulse 4s infinite ease-in-out;
+}
+
+/* --- Card Dynamic Transitions --- */
+.card-hover {
+    transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+    will-change: transform, border-color, box-shadow;
+}
+
+.card-hover:hover {
+    transform: translateY(-6px) scale(1.02);
+    border-color: var(--neon-emerald) !important;
+    box-shadow: 0 12px 30px -10px var(--neon-glow);
+    background-color: rgba(9, 9, 11, 0.8) !important;
+}
+
+/* --- Level Progression Tracking Animation --- */
+.working-progress {
+    position: relative;
+    overflow: hidden;
+}
+
+.working-progress::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(
+        90deg,
+        transparent,
+        rgba(255, 255, 255, 0.25),
+        transparent
+    );
+    animation: loadingScan 2.5s infinite linear;
+}
+
+/* --- Custom Custom Scrollbar Infrastructure --- */
+::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+}
+
+::-webkit-scrollbar-track {
+    background: var(--cyber-black);
+}
+
+::-webkit-scrollbar-thumb {
+    background: #18181b;
+    border: 1px solid #27272a;
+    border-radius: 9999px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: var(--neon-emerald);
+    border-color: #34d399;
+}
+
+/* --- Micro Interactive Animation Routines --- */
+@keyframes textPulse {
+    0%, 100% {
+        text-shadow: 0 0 4px #fff, 0 0 10px var(--neon-emerald), 0 0 20px var(--neon-emerald);
+    }
+    50% {
+        text-shadow: 0 0 6px #fff, 0 0 14px var(--neon-emerald), 0 0 28px var(--neon-emerald), 0 0 50px var(--neon-emerald);
+    }
+}
+
+@keyframes loadingScan {
+    0% {
+        left: -100%;
+    }
+    100% {
+        left: 100%;
+    }
+}
+
+/* --- Focus Glassmorphism Filters --- */
+input:focus, textarea:focus {
+    box-shadow: 0 0 0 2px rgba(16, 185, 129, 0.15);
+    background-color: #000000 !important;
 }
