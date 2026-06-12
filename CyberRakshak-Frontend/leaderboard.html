@@ -8,42 +8,181 @@
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
 </head>
-<body class="bg-zinc-950 text-zinc-200">
+<body class="bg-zinc-950 text-zinc-200 antialiased">
 
-    <nav class="bg-black border-b border-emerald-900 px-6 py-4 flex justify-between items-center sticky top-0 z-50">
+    <nav class="bg-black border-b border-zinc-900 px-6 py-4 flex justify-between items-center sticky top-0 z-50">
         <a href="index.html" class="flex items-center gap-3">
             <div class="w-9 h-9 bg-emerald-500 rounded-2xl flex items-center justify-center text-2xl">🛡️</div>
             <span class="title-font text-2xl font-bold neon-green">CYBERRAKSHAK</span>
         </a>
-        <div class="flex gap-8">
-            <a href="dashboard.html">Dashboard</a>
-            <a href="ai-detector.html">AI Detector</a>
-            <a href="simulations.html">Simulations</a>
+        <div class="flex gap-8 text-sm font-medium">
+            <a href="dashboard.html" class="hover:text-emerald-400 transition-colors">Dashboard</a>
+            <a href="ai-detector.html" class="hover:text-emerald-400 transition-colors">AI Detector</a>
+            <a href="simulations.html" class="hover:text-emerald-400 transition-colors">Simulations</a>
             <a href="leaderboard.html" class="text-emerald-400">Leaderboard</a>
         </div>
+        <div onclick="logout()" class="cursor-pointer w-9 h-9 bg-zinc-700 hover:bg-red-500/20 rounded-2xl flex items-center justify-center transition-colors">👤</div>
     </nav>
 
     <div class="max-w-4xl mx-auto px-6 py-12">
-        <h2 class="text-4xl font-bold mb-8 flex items-center gap-3"><span>🏆</span> Global Leaderboard</h2>
         
-        <div class="bg-zinc-900 rounded-3xl p-8">
-            <table class="w-full text-left">
-                <tr class="border-b border-zinc-700">
-                    <td class="py-5 font-bold">1. rajcyber01</td>
-                    <td class="text-right text-emerald-400 font-mono">3240 XP</td>
-                </tr>
-                <tr class="border-b border-zinc-700">
-                    <td class="py-5 font-bold">2. securityninja</td>
-                    <td class="text-right text-emerald-400 font-mono">2890 XP</td>
-                </tr>
-                <tr class="border-b border-emerald-500 bg-emerald-900/30">
-                    <td class="py-5 font-bold text-emerald-400">3. You (Guardian)</td>
-                    <td class="text-right text-emerald-400 font-mono">2470 XP</td>
-                </tr>
-            </table>
+        <div class="text-center mb-16">
+            <h2 class="text-5xl font-bold title-font mb-3">🏆 Global Agent Standings</h2>
+            <p class="text-xl text-zinc-400">Compare completion velocity metrics and outrank concurrent security operational logs.</p>
         </div>
+
+        <div class="grid grid-cols-3 gap-4 items-end max-w-2xl mx-auto mb-12 text-center">
+            
+            <div class="bg-zinc-900/60 border border-zinc-800 rounded-2xl p-4 flex flex-col items-center shadow-lg transform hover:-translate-y-1 transition duration-300">
+                <div class="w-12 h-12 rounded-full border-2 border-zinc-400 flex items-center justify-center bg-zinc-800 text-lg font-bold mb-2 text-zinc-300">2</div>
+                <div id="podium-2-name" class="font-bold text-sm text-zinc-300 truncate w-full">Loading...</div>
+                <div id="podium-2-xp" class="text-xs text-zinc-500 font-mono mt-1">-- XP</div>
+            </div>
+
+            <div class="bg-zinc-900 border-2 border-emerald-500/40 rounded-2xl p-6 flex flex-col items-center shadow-2xl shadow-emerald-500/5 transform hover:-translate-y-2 transition duration-300 relative -top-4">
+                <div class="absolute -top-5 text-2xl animate-bounce">👑</div>
+                <div class="w-14 h-14 rounded-full border-2 border-amber-400 flex items-center justify-center bg-zinc-800 text-xl font-bold mb-2 text-amber-400">1</div>
+                <div id="podium-1-name" class="font-extrabold text-emerald-400 truncate w-full">Loading...</div>
+                <div id="podium-1-xp" class="text-xs text-zinc-400 font-mono font-bold mt-1">-- XP</div>
+            </div>
+
+            <div class="bg-zinc-900/60 border border-zinc-800 rounded-2xl p-4 flex flex-col items-center shadow-lg transform hover:-translate-y-1 transition duration-300">
+                <div class="w-12 h-12 rounded-full border-2 border-amber-700 flex items-center justify-center bg-zinc-800 text-lg font-bold mb-2 text-amber-600">3</div>
+                <div id="podium-3-name" class="font-bold text-sm text-zinc-300 truncate w-full">Loading...</div>
+                <div id="podium-3-xp" class="text-xs text-zinc-500 font-mono mt-1">-- XP</div>
+            </div>
+            
+        </div>
+
+        <div class="bg-zinc-900 border border-zinc-800 rounded-3xl p-6 md:p-8 shadow-2xl">
+            <div class="flex justify-between items-center border-b border-zinc-800/80 pb-4 mb-4 text-xs font-mono tracking-wider font-bold text-zinc-500 uppercase">
+                <div class="flex items-center gap-6">
+                    <span class="w-8 text-center">Rank</span>
+                    <span>Defensive Agent Node</span>
+                </div>
+                <span>Experience Metric Balance</span>
+            </div>
+
+            <div id="leaderboard-rows" class="space-y-2">
+                <p class="text-zinc-500 text-sm font-mono italic text-center py-6">Aggregating telemetry nodes status grids...</p>
+            </div>
+
+            <div class="border-t border-zinc-800/80 mt-6 pt-6">
+                <div class="p-4 bg-emerald-500/10 border border-emerald-500/30 rounded-xl flex justify-between items-center shadow-inner">
+                    <div class="flex items-center gap-6">
+                        <span id="current-user-rank-index" class="w-8 text-center font-mono font-bold text-emerald-400 text-sm">#--</span>
+                        <div>
+                            <span id="current-user-rank-name" class="font-bold text-zinc-200">Retrieving profile ID...</span>
+                            <span class="ml-2 px-2 py-0.5 bg-emerald-500 text-black text-[9px] font-mono rounded font-bold uppercase tracking-widest">You</span>
+                        </div>
+                    </div>
+                    <span id="current-user-rank-xp" class="font-mono font-bold text-emerald-400 text-sm">-- XP</span>
+                </div>
+            </div>
+        </div>
+
     </div>
 
     <script src="js/app.js"></script>
+    <script>
+        // Static array defining sandbox base entries to prevent layout gaps
+        const staticGlobalCompetitors = [
+            { username: "Kali_Rakshak", xp: 4850 },
+            { username: "ZeroDay_Defuser", xp: 4120 },
+            { username: "Cyber_Sentinel", xp: 3900 },
+            { username: "Byte_Shield", xp: 2850 },
+            { username: "Phish_Hooker", xp: 2100 },
+            { username: "Root_Guider", xp: 1950 },
+            { username: "Proxy_Filter", xp: 1400 }
+        ];
+
+        // 1. Telemetry Aggregation Router Sequence
+        async function buildLeaderboardMatrix() {
+            let userProfile = { username: "Local_Agent", xp: 0 };
+            
+            // Extract the user data payload directly from your app.js storage instances
+            if (typeof getUserTelemetry === 'function') {
+                userProfile = getUserTelemetry();
+            }
+
+            try {
+                const response = await fetch('/api/user/leaderboard', {
+                    method: 'GET',
+                    headers: { 'Authorization': `Bearer ${localStorage.getItem('token')}` }
+                });
+                
+                if (response.ok) {
+                    const dynamicData = await response.json();
+                    processStandings(dynamicData, userProfile);
+                } else {
+                    processStandings(staticGlobalCompetitors, userProfile);
+                }
+            } catch (err) {
+                console.warn("Database sync dropped. Compiling standings matrix locally using static values.");
+                processStandings(staticGlobalCompetitors, userProfile);
+            }
+        }
+
+        // 2. Rank Processing Strategy Engine
+        function processStandings(competitorsList, activeUser) {
+            // Append the active session inside sorting arrays if not natively present
+            const missingFromList = !competitorsList.some(c => c.username.toLowerCase() === activeUser.username.toLowerCase());
+            if (missingFromList) {
+                competitorsList.push({ username: activeUser.username, xp: activeUser.xp });
+            } else {
+                // Ensure the active user's score from local storage overrides static list variations
+                const userIndex = competitorsList.findIndex(c => c.username.toLowerCase() === activeUser.username.toLowerCase());
+                if (userIndex !== -1) competitorsList[userIndex].xp = activeUser.xp;
+            }
+
+            // Sort descending by XP level parameters
+            competitorsList.sort((a, b) => b.xp - a.xp);
+
+            // 3. Populate Podium Layout Nodes
+            if (competitorsList[0]) {
+                document.getElementById('podium-1-name').textContent = competitorsList[0].username;
+                document.getElementById('podium-1-xp').textContent = `${competitorsList[0].xp} XP`;
+            }
+            if (competitorsList[1]) {
+                document.getElementById('podium-2-name').textContent = competitorsList[1].username;
+                document.getElementById('podium-2-xp').textContent = `${competitorsList[1].xp} XP`;
+            }
+            if (competitorsList[2]) {
+                document.getElementById('podium-3-name').textContent = competitorsList[2].username;
+                document.getElementById('podium-3-xp').textContent = `${competitorsList[2].xp} XP`;
+            }
+
+            // 4. Append Remaining Rows dynamically to Scoreboard Area Grid
+            const targetContainer = document.getElementById('leaderboard-rows');
+            targetContainer.innerHTML = ''; // Strip default processing notification tags
+
+            competitorsList.forEach((competitor, idx) => {
+                const globalRankNum = idx + 1;
+                const isTargetUser = competitor.username.toLowerCase() === activeUser.username.toLowerCase();
+                
+                // Track active user location to synchronize the fixed lower dashboard summary bar
+                if (isTargetUser) {
+                    document.getElementById('current-user-rank-index').textContent = `#${globalRankNum}`;
+                    document.getElementById('current-user-rank-name').textContent = competitor.username;
+                    document.getElementById('current-user-rank-xp').textContent = `${competitor.xp} XP`;
+                }
+
+                // Render structure maps inside the table stack
+                const rowElement = document.createElement('div');
+                rowElement.className = `flex justify-between items-center p-4 rounded-xl border transition-colors ${isTargetUser ? 'bg-emerald-500/5 border-emerald-500/20' : 'bg-zinc-950/40 border-zinc-900/60 hover:bg-zinc-900/40'}`;
+                rowElement.innerHTML = `
+                    <div class="flex items-center gap-6">
+                        <span class="w-8 text-center font-mono text-xs font-bold ${globalRankNum <= 3 ? 'text-emerald-400' : 'text-zinc-600'}">#${globalRankNum}</span>
+                        <span class="text-sm font-medium ${isTargetUser ? 'text-emerald-400 font-bold' : 'text-zinc-300'}">${competitor.username}</span>
+                    </div>
+                    <span class="font-mono text-xs font-bold ${isTargetUser ? 'text-emerald-400' : 'text-zinc-400'}">${competitor.xp} XP</span>
+                `;
+                targetContainer.appendChild(rowElement);
+            });
+        }
+
+        // Initialize execution on content readiness pass
+        window.onload = buildLeaderboardMatrix;
+    </script>
 </body>
 </html>
