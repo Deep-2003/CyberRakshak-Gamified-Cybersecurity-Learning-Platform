@@ -163,8 +163,6 @@ The project includes:
 
 ## 👨‍💻 Team Structure
 
-## 👨‍💻 Team Structure
-
 | Name | Role | Responsibility |
 |------|------|---------------|
 | Deepanshu Singh (Team Leader) | Cybersecurity & Full Stack Developer | Project coordination, frontend-backend development, basic cybersecurity implementation, integration of all modules |
