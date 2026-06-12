@@ -24,27 +24,172 @@
         <div onclick="logout()" class="cursor-pointer w-9 h-9 bg-zinc-700 hover:bg-red-500/20 rounded-2xl flex items-center justify-center">👤</div>
     </nav>
 
-    <div class="max-w-5xl mx-auto px-6 py-12">
-        <h2 class="text-4xl font-bold mb-8">🎮 Interactive Simulations</h2>
-        <div class="grid md:grid-cols-3 gap-6">
-            <div onclick="startSimulation(1)" class="bg-zinc-900 border border-zinc-700 hover:border-rose-500 rounded-3xl p-8 cursor-pointer card-hover">
-                <div class="text-6xl mb-6">📧</div>
-                <h3 class="font-bold text-xl">Phishing Email Attack</h3>
-                <p class="text-zinc-400 mt-2">Identify fake links & urgent requests</p>
+    <div class="max-w-6xl mx-auto px-6 py-12">
+        <div class="flex justify-between items-end mb-12">
+            <div>
+                <h2 class="text-5xl font-bold title-font mb-3">🎮 Cyber Simulations</h2>
+                <p class="text-xl text-zinc-400">Train against real threats. Earn XP. Become a Cyber Rakshak.</p>
             </div>
-            <div onclick="startSimulation(2)" class="bg-zinc-900 border border-zinc-700 hover:border-amber-500 rounded-3xl p-8 cursor-pointer card-hover">
-                <div class="text-6xl mb-6">📱</div>
-                <h3 class="font-bold text-xl">OTP Fraud Call</h3>
-                <p class="text-zinc-400 mt-2">Handle live social engineering</p>
+            <div class="text-right">
+                <div class="text-emerald-400 text-sm">YOUR STREAK 🔥</div>
+                <div id="streak" class="text-4xl font-bold">7 days</div>
             </div>
-            <div onclick="startSimulation(3)" class="bg-zinc-900 border border-zinc-700 hover:border-cyan-500 rounded-3xl p-8 cursor-pointer card-hover">
-                <div class="text-6xl mb-6">🔐</div>
-                <h3 class="font-bold text-xl">Password Fortress</h3>
-                <p class="text-zinc-400 mt-2">Build unbreakable passwords</p>
+        </div>
+
+        <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6" id="simulations-grid"></div>
+
+        <!-- Active Simulation -->
+        <div id="simulation-area" class="hidden mt-12 bg-zinc-900 rounded-3xl p-10 border border-emerald-500/30">
+            <button onclick="closeSimulation()" class="float-right text-3xl text-zinc-400 hover:text-white">✕</button>
+            <h3 id="sim-title" class="text-3xl font-bold mb-4"></h3>
+            <p id="sim-description" class="text-zinc-400 mb-8"></p>
+            <div id="sim-content" class="min-h-[320px]"></div>
+
+            <div class="mt-10 flex gap-4">
+                <button onclick="completeSimulation()" class="flex-1 py-5 bg-emerald-500 hover:bg-emerald-400 text-black font-bold rounded-3xl transition">✅ Complete & Earn XP</button>
+                <button onclick="closeSimulation()" class="flex-1 py-5 border border-zinc-600 hover:bg-zinc-800 rounded-3xl">Cancel</button>
             </div>
         </div>
     </div>
 
     <script src="js/app.js"></script>
+    <script>
+        // Enhanced Simulations based on repo themes (Phishing, OTP, Loan Scams, etc.)
+        const simulations = [
+            {
+                id: 1,
+                title: "Phishing Email Attack",
+                icon: "📧",
+                difficulty: "Medium",
+                xp: 120,
+                description: "Spot the fake bank email and avoid clicking malicious links.",
+                content: `
+                    <div class="bg-zinc-800 rounded-2xl p-8">
+                        <p class="mb-6">"Urgent: Your SBI account is locked. Verify now: <span class="text-rose-400">sbi-security-login.com</span>"</p>
+                        <div class="grid grid-cols-2 gap-4">
+                            <button onclick="makeChoice(1, false)" class="py-5 border border-rose-500 text-rose-400 rounded-2xl hover:bg-rose-500/10">Click Link</button>
+                            <button onclick="makeChoice(1, true)" class="py-5 bg-emerald-500 text-black rounded-2xl">Report as Scam</button>
+                        </div>
+                    </div>
+                `
+            },
+            {
+                id: 2,
+                title: "OTP Fraud Call",
+                icon: "📱",
+                difficulty: "High",
+                xp: 150,
+                description: "Bank executive asks for your OTP. What do you do?",
+                content: `
+                    <div class="bg-zinc-800 rounded-2xl p-8 text-center">
+                        <p class="text-xl">"Hello Sir, this is HDFC Bank. Share the OTP we sent for security check."</p>
+                        <div class="mt-10 grid grid-cols-2 gap-4">
+                            <button onclick="makeChoice(2, false)" class="py-5 border border-rose-500 text-rose-400 rounded-2xl">Share OTP</button>
+                            <button onclick="makeChoice(2, true)" class="py-5 bg-emerald-500 text-black rounded-2xl">Refuse & Hang Up</button>
+                        </div>
+                    </div>
+                `
+            },
+            {
+                id: 3,
+                title: "Fake Loan Scam",
+                icon: "💰",
+                difficulty: "Medium",
+                xp: 100,
+                description: "Instant loan offer with too-good-to-be-true terms.",
+                content: `
+                    <div class="bg-zinc-800 rounded-2xl p-8">
+                        <p>"Get ₹5 Lakh loan in 5 minutes! Just pay ₹499 processing fee."</p>
+                        <div class="mt-8 flex gap-4">
+                            <button onclick="makeChoice(3, false)" class="flex-1 py-5 border border-rose-500 text-rose-400 rounded-2xl">Pay Fee</button>
+                            <button onclick="makeChoice(3, true)" class="flex-1 py-5 bg-emerald-500 text-black rounded-2xl">Ignore</button>
+                        </div>
+                    </div>
+                `
+            },
+            {
+                id: 4,
+                title: "Password Fortress",
+                icon: "🔐",
+                difficulty: "Easy",
+                xp: 80,
+                description: "Create a strong password and test it.",
+                content: `
+                    <div class="max-w-md mx-auto">
+                        <input id="passwordInput" type="password" placeholder="Create strong password" class="w-full bg-zinc-800 border border-zinc-700 rounded-2xl px-6 py-4 text-lg mb-6">
+                        <button onclick="checkPassword()" class="w-full py-5 bg-emerald-500 text-black font-bold rounded-3xl">Test Strength</button>
+                        <div id="passwordResult" class="mt-6 text-center"></div>
+                    </div>
+                `
+            }
+        ];
+
+        function loadSimulations() {
+            const grid = document.getElementById('simulations-grid');
+            grid.innerHTML = simulations.map(sim => `
+                <div onclick="startSimulation(${sim.id})" class="bg-zinc-900 border border-zinc-700 hover:border-emerald-500 rounded-3xl p-8 cursor-pointer card-hover group">
+                    <div class="text-6xl mb-6 transition-transform group-hover:scale-110">${sim.icon}</div>
+                    <h3 class="font-bold text-2xl mb-2">${sim.title}</h3>
+                    <p class="text-zinc-400 text-sm mb-4">${sim.description}</p>
+                    <div class="flex justify-between text-xs">
+                        <span class="px-3 py-1 bg-zinc-800 rounded-full">${sim.difficulty}</span>
+                        <span class="text-emerald-400">+${sim.xp} XP</span>
+                    </div>
+                </div>
+            `).join('');
+        }
+
+        let currentSim = null;
+
+        function startSimulation(id) {
+            currentSim = simulations.find(s => s.id === id);
+            if (!currentSim) return;
+
+            document.getElementById('simulation-area').classList.remove('hidden');
+            document.getElementById('sim-title').textContent = currentSim.title;
+            document.getElementById('sim-description').textContent = currentSim.description;
+            document.getElementById('sim-content').innerHTML = currentSim.content;
+        }
+
+        function closeSimulation() {
+            document.getElementById('simulation-area').classList.add('hidden');
+        }
+
+        function makeChoice(simId, isCorrect) {
+            if (isCorrect) {
+                alert("✅ Outstanding! You made the right security decision.");
+                claimXP();
+            } else {
+                alert("❌ This is a common scam tactic. Stay alert!");
+            }
+            setTimeout(closeSimulation, 1200);
+        }
+
+        function checkPassword() {
+            const pwd = document.getElementById('passwordInput').value;
+            const result = document.getElementById('passwordResult');
+            if (!pwd) return;
+
+            if (pwd.length >= 12 && /[A-Z]/.test(pwd) && /[0-9]/.test(pwd) && /[!@#$]/.test(pwd)) {
+                result.innerHTML = `<p class="text-emerald-400 font-bold text-xl">🔥 Excellent Strong Password! +80 XP</p>`;
+                claimXP();
+            } else if (pwd.length >= 8) {
+                result.innerHTML = `<p class="text-amber-400">Good, but add symbols & numbers for maximum security.</p>`;
+            } else {
+                result.innerHTML = `<p class="text-rose-400">Too weak! Use longer password with variety.</p>`;
+            }
+        }
+
+        function completeSimulation() {
+            if (currentSim) {
+                alert(`🎉 Simulation Completed! You earned +${currentSim.xp} XP`);
+                claimXP();
+            }
+            closeSimulation();
+        }
+
+        // Auto load on page open
+        window.onload = loadSimulations;
+    </script>
 </body>
 </html>
