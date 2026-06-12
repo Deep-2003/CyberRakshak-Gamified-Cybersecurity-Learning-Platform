@@ -1,0 +1,52 @@
+[
+    {
+        "message": "Share OTP immediately",
+        "expected": "SCAM",
+        "prediction": 0
+    },
+    {
+        "message": "Congratulations! You won \u20b950 lakh",
+        "expected": "SCAM",
+        "prediction": 1
+    },
+    {
+        "message": "Click here to update your password",
+        "expected": "SCAM",
+        "prediction": 1
+    },
+    {
+        "message": "Your bank account has been blocked. Verify now.",
+        "expected": "SCAM",
+        "prediction": 1
+    },
+    {
+        "message": "Claim your free iPhone now!",
+        "expected": "SCAM",
+        "prediction": 1
+    },
+    {
+        "message": "Meeting tomorrow at 10 AM",
+        "expected": "SAFE",
+        "prediction": 0
+    },
+    {
+        "message": "Thank you for shopping with us",
+        "expected": "SAFE",
+        "prediction": 0
+    },
+    {
+        "message": "Project review scheduled for Monday",
+        "expected": "SAFE",
+        "prediction": 0
+    },
+    {
+        "message": "Your electricity bill has been generated",
+        "expected": "SAFE",
+        "prediction": 1
+    },
+    {
+        "message": "Lunch at 1 PM?",
+        "expected": "SAFE",
+        "prediction": 0
+    }
+]

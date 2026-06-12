@@ -1,0 +1,9 @@
+[
+    {
+        "message": "Share OTP immediately",
+        "expected": "SCAM",
+        "prediction": 0,
+        "severity": "HIGH",
+        "reason": "OTP-based scam message was not detected."
+    }
+]

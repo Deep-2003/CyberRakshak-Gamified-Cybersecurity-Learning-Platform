@@ -2,41 +2,43 @@
 
 ## Objective
 
-The purpose of this testing activity is to evaluate the performance of the CyberRakshak Scam Detection Model against known scam and legitimate messages.
+Evaluate the effectiveness of the AI-powered scam detection model against realistic scam and legitimate communication scenarios.
 
 ## Test Environment
 
-* Platform: CyberRakshak
-* Model: To Be Added
-* Dataset: scam_dataset.csv
-* Tester: Kriti Dwivedi
-* Date: To Be Updated
+* Model: DistilBERT Scam Detection Model
+* Framework: HuggingFace Transformers
+* Testing Module: CyberRakshak Security Validation Framework
 
-## Test Cases
+## Test Cases Executed
 
-| Test ID | Input Message                             | Expected Result | Actual Result | Status  |
-| ------- | ----------------------------------------- | --------------- | ------------- | ------- |
-| TC001   | Share OTP immediately to verify account   | Scam            | Pending       | Pending |
-| TC002   | Congratulations! You won ₹20 lakh         | Scam            | Pending       | Pending |
-| TC003   | Your account will be blocked. Verify now. | Scam            | Pending       | Pending |
-| TC004   | Accept payment request to receive refund  | Scam            | Pending       | Pending |
-| TC005   | Pay ₹500 registration fee to confirm job  | Scam            | Pending       | Pending |
-| TC006   | Double your money in 7 days               | Scam            | Pending       | Pending |
-| TC007   | Click here to update your password        | Scam            | Pending       | Pending |
-| TC008   | Meeting scheduled tomorrow at 10 AM       | Safe            | Pending       | Pending |
-| TC009   | Your train ticket is confirmed            | Safe            | Pending       | Pending |
-| TC010   | Electricity bill paid successfully        | Safe            | Pending       | Pending |
+| Category            | Count |
+| ------------------- | ----- |
+| Scam Messages       | 5     |
+| Legitimate Messages | 5     |
+| Total               | 10    |
 
-## Test Summary
+## Findings
 
-Total Test Cases: 10
+### Successfully Detected
 
-Passed: Pending
+* Lottery scam messages
+* Account verification scams
+* Password update scams
+* Reward and gift scams
 
-Failed: Pending
+### Misclassified
 
-Accuracy: Pending
+#### False Positive
 
-## Remarks
+* Utility bill notification
 
-Final results will be updated after integration of the trained AI model.
+#### False Negative
+
+* OTP-based scam message
+
+## Conclusion
+
+The model demonstrates effective detection of common scam patterns and phishing attempts. Minor classification errors were observed in edge-case scenarios involving OTP-based fraud and legitimate service notifications.
+
+Additional training and dataset expansion are recommended before production deployment.

@@ -1,59 +1,41 @@
 # Performance Metrics
 
-## Objective
+## Validation Summary
 
-Measure the effectiveness of the CyberRakshak Scam Detection Model.
+A validation dataset consisting of scam and legitimate messages was tested against the DistilBERT-based scam detection model.
 
-## Metrics
+### Observations
 
-### Accuracy
+* The model successfully identified multiple common scam patterns, including:
 
-Formula:
+  * Lottery scams
+  * Account verification scams
+  * Password update scams
+  * Promotional reward scams
 
-Accuracy = Correct Predictions / Total Predictions
+* The model correctly classified most legitimate communication messages.
 
-Current Value:
+### Identified Issues
 
-Pending
+#### False Positive
 
----
+* Utility bill notification incorrectly classified as scam.
 
-### Precision
+#### False Negative
 
-Formula:
+* OTP-related scam message incorrectly classified as legitimate.
 
-Precision = True Positives / (True Positives + False Positives)
+### Security Assessment
 
-Current Value:
+The model demonstrates strong capability in detecting common phishing and social engineering attempts. However, additional training data focused on OTP-based fraud and legitimate billing notifications is recommended to improve classification accuracy.
 
-Pending
+### Recommendation
 
----
+Expand the training dataset with:
 
-### Recall
+* Banking OTP scams
+* Government service notifications
+* Utility billing messages
+* E-commerce transaction alerts
 
-Formula:
-
-Recall = True Positives / (True Positives + False Negatives)
-
-Current Value:
-
-Pending
-
----
-
-### F1 Score
-
-Formula:
-
-F1 = 2 × (Precision × Recall) / (Precision + Recall)
-
-Current Value:
-
-Pending
-
----
-
-## Status
-
-Waiting for final model evaluation results.
+to improve robustness and reduce misclassification rates.

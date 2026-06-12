@@ -1,0 +1,9 @@
+[
+    {
+        "message": "Your electricity bill has been generated",
+        "expected": "SAFE",
+        "prediction": 1,
+        "severity": "MEDIUM",
+        "reason": "Legitimate billing notification incorrectly classified as scam."
+    }
+]

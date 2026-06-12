@@ -95,16 +95,69 @@ CyberRakshak provides a **gamified cybersecurity learning platform integrated wi
 The Scam Detection Model is a key component of CyberRakshak.
 
 ### 🔍 Functionality
-- Takes user input (SMS / Email text)  
-- Processes text using NLP techniques  
-- Classifies into:
-  - Scam  
-  - Not Scam  
+
+* Takes user input (SMS / Email text)
+* Processes text using Natural Language Processing (NLP)
+* Detects suspicious communication patterns
+* Classifies messages as:
+
+  * Scam
+  * Genuine
 
 ### ⚙️ Techniques Used
-- Text preprocessing (tokenization, stopword removal)  
-- Feature extraction (TF-IDF / Bag of Words)  
-- Machine Learning models (Logistic Regression / Naive Bayes)
+
+* Text preprocessing
+* Tokenization
+* Transformer-based NLP
+* DistilBERT Fine-Tuning
+* Binary Text Classification
+
+### 🧪 Model Validation
+
+The model was evaluated using a curated validation dataset containing both legitimate and scam-related messages.
+
+#### Categories Tested
+
+* OTP Fraud
+* Lottery Scams
+* Banking Verification Scams
+* Password Reset Phishing
+* Promotional Reward Scams
+* Utility Notifications
+* General Communication Messages
+
+#### Security Testing Findings
+
+##### Successfully Detected
+
+* Lottery scams
+* Password reset scams
+* Fake account verification requests
+* Promotional reward scams
+
+##### False Positive Cases
+
+* Utility billing notifications occasionally flagged as suspicious
+
+##### False Negative Cases
+
+* Certain OTP-based scam messages were not detected
+
+#### Security Assessment
+
+The model demonstrates strong capability in identifying common phishing and social engineering attacks. Additional training data containing OTP fraud patterns and legitimate service notifications can further improve robustness.
+
+### 📊 Cybersecurity Testing Artifacts
+
+The project includes:
+
+* Validation Dataset
+* Validation Results
+* False Positive Analysis
+* False Negative Analysis
+* Performance Metrics
+* Test Execution Report
+* Security Improvement Recommendations
 
 ---
 
