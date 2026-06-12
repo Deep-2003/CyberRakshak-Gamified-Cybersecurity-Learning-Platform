@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Detector - CyberRakshak</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
+</head>
+<body class="bg-zinc-950 text-zinc-200">
+
+    <nav class="bg-black border-b border-emerald-900 px-6 py-4 flex justify-between items-center sticky top-0 z-50">
+        <a href="index.html" class="flex items-center gap-3">
+            <div class="w-9 h-9 bg-emerald-500 rounded-2xl flex items-center justify-center text-2xl">🛡️</div>
+            <span class="title-font text-2xl font-bold neon-green">CYBERRAKSHAK</span>
+        </a>
+        <div class="flex gap-8 text-sm font-medium">
+            <a href="dashboard.html">Dashboard</a>
+            <a href="ai-detector.html" class="text-emerald-400">AI Detector</a>
+            <a href="simulations.html">Simulations</a>
+            <a href="leaderboard.html">Leaderboard</a>
+        </div>
+        <div onclick="logout()" class="cursor-pointer w-9 h-9 bg-zinc-700 hover:bg-red-500/20 rounded-2xl flex items-center justify-center">👤</div>
+    </nav>
+
+    <div class="max-w-3xl mx-auto px-6 py-12">
+        <h2 class="text-4xl font-bold mb-8">🧠 AI Scam Detector</h2>
+        <textarea id="messageInput" rows="8" class="w-full bg-zinc-900 border border-zinc-700 rounded-3xl p-6 text-zinc-200 focus:border-emerald-500" placeholder="Paste suspicious message here..."></textarea>
+        
+        <button onclick="analyzeScam()" class="mt-8 w-full py-6 bg-emerald-500 text-black font-bold text-xl rounded-3xl hover:scale-105 transition">
+            ANALYZE WITH AI
+        </button>
+
+        <div id="result" class="mt-10"></div>
+    </div>
+
+    <script src="js/app.js"></script>
+</body>
+</html>

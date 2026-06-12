@@ -1,4 +1,4 @@
-message,label,category
+essage,label,category
 "Your OTP 482913 is required to prevent account suspension. Share it immediately with our verification officer.",scam,otp_theft
 "Dear customer, confirm OTP 771204 to receive your pending cashback reward today.",scam,otp_theft
 "Bank security alert: Unauthorized login detected. Reply with OTP 390118 to secure your account.",scam,otp_theft
