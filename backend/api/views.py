@@ -51,7 +51,7 @@ def scam_detect_view(request):
 @api_view(["GET"])
 @permission_classes([IsAuthenticated])
 def profile(request):
-     
+    #ensure profile is created for each user
     profile, created = UserProfile.objects.get_or_create(
                             user=request.user
                         )

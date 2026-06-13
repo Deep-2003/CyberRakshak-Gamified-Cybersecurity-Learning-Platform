@@ -9,7 +9,7 @@ from rest_framework_simplejwt.views import (
     TokenObtainPairView,
     TokenRefreshView,
 )
-
+#paths to views
 urlpatterns = [
     path('detect-scam/', scam_detect_view, name='detect-scam'),
     path("register/", register),
