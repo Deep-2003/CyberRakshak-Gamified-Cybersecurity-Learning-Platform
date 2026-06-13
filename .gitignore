@@ -1,0 +1,45 @@
+# Python
+__pycache__/
+*.py[cod]
+*.pyo
+
+# Virtual Environment
+venv/
+env/
+.venv/
+
+#zip
+*.7z
+*.zip
+
+# Django
+db.sqlite3
+*.sqlite3
+
+# Environment Variables
+.env
+
+# VS Code
+.vscode/
+
+# OS Files
+.DS_Store
+Thumbs.db
+
+# Logs
+*.log
+
+# Build files
+dist/
+build/
+
+# Python cache
+.pytest_cache/
+.mypy_cache/
+
+# ML Models (optional)
+ml_models/bert_model/
+ml_models/classical_models/*.pkl
+
+# Migrations cache
+**/__pycache__/
