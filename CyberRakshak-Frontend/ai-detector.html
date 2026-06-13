@@ -10,10 +10,8 @@
 </head>
 <body class="bg-zinc-950 text-zinc-200 antialiased animated-bg">
 
-    <!-- Premium Navigation Header Array -->
     <nav class="bg-black/75 backdrop-blur-md border-b border-zinc-900/80 px-6 py-4 flex justify-between items-center sticky top-0 z-50">
         
-        <!-- CyberRakshak Ultra-Premium Animated Logo Component -->
         <a href="index.html" class="flex items-center gap-4 group">
             <div class="relative w-14 h-14 bg-black border border-emerald-500/20 rounded-2xl flex items-center justify-center shadow-xl shadow-emerald-950/40 group-hover:border-emerald-400/60 transition-all duration-500">
                 <div class="absolute inset-0 rounded-2xl bg-gradient-to-tr from-emerald-500/10 to-cyan-500/0 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
@@ -46,7 +44,6 @@
             </div>
         </a>
 
-        <!-- Navigation Menu Strings -->
         <div class="hidden md:flex gap-8 text-sm font-medium tracking-wide">
             <a href="dashboard.html" class="hover:text-emerald-400 transition-colors">Dashboard</a>
             <a href="ai-detector.html" class="text-emerald-400">AI Detector</a>
@@ -54,7 +51,6 @@
             <a href="leaderboard.html" class="hover:text-emerald-400 transition-colors">Leaderboard</a>
         </div>
 
-        <!-- Identity Telemetry Hook Node (Managed by js/app.js) -->
         <div class="flex items-center gap-4">
             <div class="hidden sm:flex flex-col text-right">
                 <span id="telemetry-username" class="text-xs font-bold font-mono text-zinc-400">Loading Agent...</span>
@@ -66,16 +62,13 @@
         </div>
     </nav>
 
-    <!-- Main Workspace Frame Layout -->
     <div class="max-w-5xl mx-auto px-6 py-12 relative z-10">
         
-        <!-- Header Matrix Summary -->
         <div class="mb-10">
             <h2 class="text-5xl font-bold title-font mb-3">🔍 AI Threat Detector</h2>
             <p class="text-xl text-zinc-400">Scan suspected communication strings, suspicious emails, or URLs to evaluate manipulation markers.</p>
         </div>
 
-        <!-- Interactive Integrated Scanning Panel -->
         <div class="glass-panel rounded-3xl p-8 mb-12 shadow-2xl">
             <div class="mb-6">
                 <label class="block text-sm font-bold tracking-wider text-emerald-400 uppercase mb-2">Input Scanning Payload</label>
@@ -84,24 +77,21 @@
 
             <div class="flex flex-col sm:flex-row justify-between items-center gap-4">
                 <div class="text-xs text-zinc-500 font-mono">⚠️ Telemetry data is scanned using advanced live linguistic backend vectors.</div>
-                <button onclick="runLiveBackendAnalysis()" class="w-full sm:w-auto px-8 py-4 bg-emerald-500 hover:bg-emerald-400 text-black font-bold rounded-2xl transition duration-200 shadow-lg shadow-emerald-500/10">
+                <button onclick="executeBackendThreatScan()" class="w-full sm:w-auto px-8 py-4 bg-emerald-500 hover:bg-emerald-400 text-black font-bold rounded-2xl transition duration-200 shadow-lg shadow-emerald-500/10">
                     Execute Security Scan
                 </button>
             </div>
 
-            <!-- Dynamic Loader Viewport -->
             <div id="scanner-loader" class="hidden mt-8 text-center py-6 border-t border-zinc-800/60">
                 <div class="inline-block animate-spin rounded-full h-8 w-8 border-4 border-emerald-500 border-t-transparent mb-3"></div>
                 <p class="text-sm font-mono text-zinc-400 tracking-wider">Contacting secure core model vectors & compiling heuristic markers...</p>
             </div>
 
-            <!-- Integrated Output Display Node -->
             <div id="scanner-result" class="hidden mt-8 p-6 rounded-2xl border transition-all duration-300"></div>
         </div>
 
         <hr class="border-zinc-900 mb-12">
 
-        <!-- Informational Footer Grid Layout -->
         <div class="grid md:grid-cols-3 gap-8">
             <div class="glass-panel rounded-2xl p-6">
                 <div class="flex items-center gap-2 mb-4">
@@ -110,8 +100,8 @@
                 </div>
                 <ul class="space-y-3 text-sm text-zinc-400 list-none pl-0">
                     <li class="flex items-start gap-2"><span class="text-emerald-500 font-bold">1.</span> Copy suspicious strings or URLs directly from communications.</li>
-                    <li class="flex items-start gap-2"><span class="text-emerald-500 font-bold">2.</span> Paste raw inputs inside the monitoring terminal box above.</li>
-                    <li class="flex items-start gap-2"><span class="text-emerald-500 font-bold">3.</span> Execute scanning analysis to register updates to your profile node.</li>
+                    <li class="flex items-start gap-2"><span class="text-emerald-500 font-bold">2.</span> Paste raw data inputs inside the monitoring terminal viewport box above.</li>
+                    <li class="flex items-start gap-2"><span class="text-emerald-500 font-bold">3.</span> Execute scanning analysis to register real-time updates to your profile node.</li>
                 </ul>
             </div>
 
@@ -138,68 +128,70 @@
         </div>
     </div>
 
-    <!-- Script Resource Pipelines -->
     <script src="js/app.js"></script>
     <script>
-        async function runLiveBackendAnalysis() {
-            const textPayload = document.getElementById('detector-input').value.trim();
+        async function executeBackendThreatScan() {
+            const textInput = document.getElementById('detector-input').value.trim();
             const loader = document.getElementById('scanner-loader');
             const resultBox = document.getElementById('scanner-result');
 
-            if (!textPayload) {
+            if (!textInput) {
                 alert("Please drop a communication threat string before executing terminal scans.");
                 return;
             }
 
-            // Visual Setup Update
+            // Trigger Visual State to Scanning Mode
             resultBox.classList.add('hidden');
             loader.classList.remove('hidden');
 
-            // Send analytical tracking request straight through to the core backend wrapper function in app.js
-            const responseData = await analyzeThreatText(textPayload);
+            // Hit the unified logic wrapper function in js/app.js which hits /api/detect-scam/
+            const data = await analyzeThreatText(textInput);
             
+            // Turn off loader element
             loader.classList.add('hidden');
             resultBox.classList.remove('hidden', 'bg-emerald-500/10', 'border-emerald-500/30', 'bg-rose-500/10', 'border-rose-500/30', 'text-emerald-400', 'text-rose-400');
 
-            if (responseData && responseData.status === "success") {
-                // If backend registers target prediction vector as malicious scam
-                if (responseData.prediction === "scam") {
+            if (data && data.status === "success") {
+                if (data.prediction === "scam") {
+                    // Threat Detected Block Layout
                     resultBox.classList.add('bg-rose-500/10', 'border-rose-500/30', 'text-rose-400');
                     resultBox.innerHTML = `
                         <div class="flex items-center gap-3 mb-2">
                             <span class="text-2xl">🚨</span>
-                            <h4 class="text-lg font-bold">Threat Indicators Captured (Vector: Malicious Malware/Scam)</h4>
+                            <h4 class="text-lg font-bold font-mono tracking-wide uppercase text-rose-500">Threat Isolated (Classification: SCAM)</h4>
                         </div>
-                        <p class="text-sm text-zinc-300">This communication matches highly verified engineering threat exploit configurations. Disregard sender credentials instantly.</p>
+                        <p class="text-sm text-zinc-300 mt-2">Our neural linguistic models detected explicit malicious vectors matching verified manipulation patterns inside your input string: <code class="bg-black/40 px-2 py-0.5 rounded text-rose-300 font-mono text-xs">${data.input_text}</code></p>
+                        <div class="mt-4 text-xs text-rose-400/75 font-mono">🎯 Gamification Balance Update: Reward criteria added successfully to your profile registry data.</div>
                     `;
                 } else {
-                    // Legitimate assessment output matching clear records
+                    // Safe/Legitimate Output Block Layout
                     resultBox.classList.add('bg-emerald-500/10', 'border-emerald-500/30', 'text-emerald-400');
                     resultBox.innerHTML = `
                         <div class="flex items-center gap-3 mb-2">
                             <span class="text-2xl">🛡️</span>
-                            <h4 class="text-lg font-bold">Nominal System Profile Validated (Vector: Clear/Legitimate)</h4>
+                            <h4 class="text-lg font-bold font-mono tracking-wide uppercase text-emerald-400">Parameters Clear (Classification: LEGITIMATE)</h4>
                         </div>
-                        <p class="text-sm text-zinc-300">Linguistic patterns register as secure. Continue monitoring with independent verification rules.</p>
+                        <p class="text-sm text-zinc-300 mt-2">The scanned content passes basic compliance checking. No typical spear-phishing or domain-spoof vectors were parsed inside this structure.</p>
+                        <div class="mt-4 text-xs text-emerald-400/75 font-mono">🎯 Gamification Balance Update: Operational scanning points appended.</div>
                     `;
                 }
-                
-                // Hot reload active navbar point gauges to dynamically display updated XP awards from your backend
-                if(localStorage.getItem("access")) {
-                     const res = await authorizedFetch("/profile/");
-                     if (res && res.ok) {
-                         const profile = await res.json();
-                         if(document.getElementById("telemetry-xp")) {
-                             document.getElementById("telemetry-xp").textContent = `${profile.points} XP`;
-                         }
-                     }
+
+                // Hot reload active navbar point gauges to dynamically display updated gamification statuses (points, streaks)
+                const token = localStorage.getItem("access");
+                if (token) {
+                    const res = await authorizedFetch("/profile/");
+                    if (res && res.ok) {
+                        const profile = await res.json();
+                        const navXP = document.getElementById("telemetry-xp");
+                        if (navXP) navXP.textContent = `${profile.points} XP`;
+                    }
                 }
             } else {
-                // Connection or runtime validation exception logic
+                // System Connectivity Failure Display Mode
                 resultBox.classList.add('bg-zinc-900', 'border-zinc-800', 'text-zinc-400');
                 resultBox.innerHTML = `
-                    <h4 class="text-sm font-bold font-mono">⚠️ Core Systems Link Interrupted</h4>
-                    <p class="text-xs text-zinc-500 mt-1">Failed to read analytics from the active backend server configuration loop.</p>
+                    <h4 class="text-sm font-bold font-mono text-amber-500">⚠️ Core Link Defect Exception</h4>
+                    <p class="text-xs text-zinc-500 mt-1">Unable to pull heuristic classifications from the active backend API server terminal. Ensure port 8000 is listening locally.</p>
                 `;
             }
         }
