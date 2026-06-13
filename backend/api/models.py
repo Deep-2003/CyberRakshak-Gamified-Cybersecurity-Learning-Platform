@@ -35,7 +35,7 @@ class UserProfile(models.Model):
         self.level = (self.points // 100) + 1
 
         self.save()
-    
+    #daily reward
     def update_streak(self):
         today = date.today()
 
@@ -50,7 +50,7 @@ class UserProfile(models.Model):
 
         else:
             self.streak = 1
-
+        
         self.last_activity_date = today
         self.save()
     def update_level(self):

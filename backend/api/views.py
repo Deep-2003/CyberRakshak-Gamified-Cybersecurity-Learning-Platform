@@ -6,6 +6,7 @@ from django.contrib.auth.models import User
 from rest_framework.permissions import IsAuthenticated
 from rest_framework.decorators import permission_classes
 from .models import UserProfile
+from datetime import date
 
 @api_view(['POST'])
 def scam_detect_view(request):
@@ -36,6 +37,20 @@ def scam_detect_view(request):
                 profile.points += 5
 
             profile.save()
+            today = date.today()
+
+            if profile.last_points_date != today:
+                profile.points_today = 0
+                profile.last_points_date = today
+
+            if profile.points_today < 100:
+
+                profile.points += 10
+                profile.points_today += 10
+
+                profile.update_level()
+
+                profile.save()
         return Response({
             "status": "success",
             "input_text": text[:100] + "..." if len(text) > 100 else text,
