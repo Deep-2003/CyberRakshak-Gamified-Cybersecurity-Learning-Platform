@@ -8,182 +8,200 @@
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
 </head>
-<body class="bg-zinc-950 text-zinc-200">
+<body class="bg-zinc-950 text-zinc-200 antialiased animated-bg">
 
-    <nav class="bg-black border-b border-emerald-900 px-6 py-4 flex justify-between items-center sticky top-0 z-50">
-        <a href="index.html" class="flex items-center gap-3">
-            <div class="w-9 h-9 bg-emerald-500 rounded-2xl flex items-center justify-center text-2xl">🛡️</div>
-            <span class="title-font text-2xl font-bold neon-green">CYBERRAKSHAK</span>
+    <!-- Premium Navigation Header Array -->
+    <nav class="bg-black/75 backdrop-blur-md border-b border-zinc-900/80 px-6 py-4 flex justify-between items-center sticky top-0 z-50">
+        
+        <!-- CyberRakshak Ultra-Premium Animated Logo Component -->
+        <a href="index.html" class="flex items-center gap-4 group">
+            <div class="relative w-14 h-14 bg-black border border-emerald-500/20 rounded-2xl flex items-center justify-center shadow-xl shadow-emerald-950/40 group-hover:border-emerald-400/60 transition-all duration-500">
+                <div class="absolute inset-0 rounded-2xl bg-gradient-to-tr from-emerald-500/10 to-cyan-500/0 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+                <svg class="w-10 h-10 filter drop-shadow-[0_0_6px_rgba(16,185,129,0.4)] group-hover:drop-shadow-[0_0_12px_rgba(52,211,153,0.7)] group-hover:rotate-[360deg] transition-all duration-700 ease-out" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <circle cx="50" cy="50" r="44" stroke="#10b981" stroke-width="1.5" stroke-dasharray="8 6 12 4" stroke-opacity="0.3" />
+                    <circle cx="50" cy="50" r="44" stroke="#34d399" stroke-width="2" stroke-dasharray="40 120" stroke-linecap="round" />
+                    <path d="M50 12L80 25V52C80 72.5 67 87.5 50 91C33 87.5 20 72.5 20 52V25L50 12Z" stroke="url(#shield_glow_gradient)" stroke-width="4.5" stroke-linejoin="round" fill="#030305" />
+                    <path d="M50 20V83M29 38H71M24 54H76M30 70H70" stroke="#047857" stroke-width="1.5" stroke-opacity="0.6" stroke-dasharray="3 3" />
+                    <path d="M36 50L46 59L64 39" stroke="#34d399" stroke-width="5" stroke-linecap="round" stroke-linejoin="round" />
+                    <circle cx="46" cy="59" r="3" fill="#ffffff" class="animate-ping" style="transform-origin: 46px 59px;" />
+                    <circle cx="64" cy="39" r="3" fill="#06b6d4" />
+                    <defs>
+                        <linearGradient id="shield_glow_gradient" x1="50" y1="12" x2="50" y2="91" gradientUnits="userSpaceOnUse">
+                            <stop offset="0%" stop-color="#34d399" />
+                            <stop offset="50%" stop-color="#10b981" />
+                            <stop offset="100%" stop-color="#06b6d4" />
+                        </linearGradient>
+                    </defs>
+                </svg>
+            </div>
+            <div class="flex flex-col select-none">
+                <div class="flex items-center gap-1">
+                    <span class="title-font text-2xl font-black tracking-wider bg-clip-text text-transparent bg-gradient-to-r from-white via-zinc-200 to-zinc-400 leading-none group-hover:from-emerald-400 group-hover:to-teal-300 transition-all duration-300">CYBER</span>
+                    <span class="title-font text-2xl font-black tracking-wider neon-green leading-none">RAKSHAK</span>
+                </div>
+                <div class="flex items-center gap-1.5 mt-1">
+                    <span class="w-1.5 h-1.5 bg-emerald-500 rounded-full animate-pulse"></span>
+                    <span class="text-[9px] font-mono tracking-[0.26em] text-zinc-500 font-bold uppercase group-hover:text-zinc-400 transition-colors duration-300">DEFENSIVE INTEL NODE</span>
+                </div>
+            </div>
         </a>
-        <div class="flex gap-8 text-sm font-medium">
-            <a href="dashboard.html" class="hover:text-emerald-400 transition">Dashboard</a>
+
+        <!-- Navigation Menu Strings -->
+        <div class="hidden md:flex gap-8 text-sm font-medium tracking-wide">
+            <a href="dashboard.html" class="hover:text-emerald-400 transition-colors">Dashboard</a>
             <a href="ai-detector.html" class="text-emerald-400">AI Detector</a>
-            <a href="simulations.html" class="hover:text-emerald-400 transition">Simulations</a>
-            <a href="leaderboard.html" class="hover:text-emerald-400 transition">Leaderboard</a>
+            <a href="simulations.html" class="hover:text-emerald-400 transition-colors">Simulations</a>
+            <a href="leaderboard.html" class="hover:text-emerald-400 transition-colors">Leaderboard</a>
         </div>
-        <div onclick="logout()" class="cursor-pointer w-9 h-9 bg-zinc-700 hover:bg-red-500/20 rounded-2xl flex items-center justify-center transition">👤</div>
+
+        <!-- Identity Telemetry Hook Node (Managed by js/app.js) -->
+        <div class="flex items-center gap-4">
+            <div class="hidden sm:flex flex-col text-right">
+                <span id="telemetry-username" class="text-xs font-bold font-mono text-zinc-400">Loading Agent...</span>
+                <span id="telemetry-xp" class="text-[10px] text-emerald-400 font-mono">---- XP</span>
+            </div>
+            <div onclick="logout()" class="cursor-pointer w-10 h-10 bg-zinc-900 border border-zinc-800 rounded-2xl flex items-center justify-center text-zinc-400 hover:text-emerald-400 hover:border-emerald-500/30 transition-all duration-200">
+                👤
+            </div>
+        </div>
     </nav>
 
-    <div class="max-w-5xl mx-auto px-6 py-12">
+    <!-- Main Workspace Frame Layout -->
+    <div class="max-w-5xl mx-auto px-6 py-12 relative z-10">
         
+        <!-- Header Matrix Summary -->
         <div class="mb-10">
             <h2 class="text-5xl font-bold title-font mb-3">🔍 AI Threat Detector</h2>
             <p class="text-xl text-zinc-400">Scan suspected communication strings, suspicious emails, or URLs to evaluate manipulation markers.</p>
         </div>
 
-        <div class="bg-zinc-900 border border-zinc-800 rounded-3xl p-8 mb-12 shadow-2xl">
+        <!-- Interactive Integrated Scanning Panel -->
+        <div class="glass-panel rounded-3xl p-8 mb-12 shadow-2xl">
             <div class="mb-6">
                 <label class="block text-sm font-bold tracking-wider text-emerald-400 uppercase mb-2">Input Scanning Payload</label>
-                <textarea id="detector-input" rows="5" placeholder="Paste the suspicious email text, SMS message, or unverified URL link structure here for forensic verification..." class="w-full bg-zinc-950 border border-zinc-800 rounded-2xl p-5 text-zinc-300 placeholder-zinc-600 focus:outline-none focus:border-emerald-500 font-mono text-sm resize-none transition"></textarea>
+                <textarea id="detector-input" rows="5" placeholder="Paste the suspicious email text, SMS message, or unverified URL link structure here for forensic verification..." class="w-full bg-zinc-950/60 border border-zinc-800 rounded-2xl p-5 text-zinc-300 placeholder-zinc-600 focus:outline-none focus:border-emerald-500 font-mono text-sm resize-none transition-all"></textarea>
             </div>
 
             <div class="flex flex-col sm:flex-row justify-between items-center gap-4">
-                <div class="text-xs text-zinc-500 font-mono">⚠️ Telemetry data is scanned using advanced linguistic vector parsing models.</div>
-                <button onclick="runThreatAnalysis()" class="w-full sm:w-auto px-8 py-4 bg-emerald-500 hover:bg-emerald-400 text-black font-bold rounded-2xl transition duration-200 shadow-lg shadow-emerald-500/10">
+                <div class="text-xs text-zinc-500 font-mono">⚠️ Telemetry data is scanned using advanced live linguistic backend vectors.</div>
+                <button onclick="runLiveBackendAnalysis()" class="w-full sm:w-auto px-8 py-4 bg-emerald-500 hover:bg-emerald-400 text-black font-bold rounded-2xl transition duration-200 shadow-lg shadow-emerald-500/10">
                     Execute Security Scan
                 </button>
             </div>
 
+            <!-- Dynamic Loader Viewport -->
             <div id="scanner-loader" class="hidden mt-8 text-center py-6 border-t border-zinc-800/60">
                 <div class="inline-block animate-spin rounded-full h-8 w-8 border-4 border-emerald-500 border-t-transparent mb-3"></div>
-                <p class="text-sm font-mono text-zinc-400 tracking-wider">Parsing semantic anomalies & domain heuristics...</p>
+                <p class="text-sm font-mono text-zinc-400 tracking-wider">Contacting secure core model vectors & compiling heuristic markers...</p>
             </div>
 
-            <div id="scanner-result" class="hidden mt-8 p-6 rounded-2xl border transition-all duration-300">
-                </div>
+            <!-- Integrated Output Display Node -->
+            <div id="scanner-result" class="hidden mt-8 p-6 rounded-2xl border transition-all duration-300"></div>
         </div>
 
         <hr class="border-zinc-900 mb-12">
 
+        <!-- Informational Footer Grid Layout -->
         <div class="grid md:grid-cols-3 gap-8">
-            
-            <div class="bg-zinc-900/40 border border-zinc-900 rounded-2xl p-6">
+            <div class="glass-panel rounded-2xl p-6">
                 <div class="flex items-center gap-2 mb-4">
                     <span class="text-emerald-400 text-xl">🛠️</span>
                     <h3 class="text-lg font-bold text-zinc-200">How to Operate</h3>
                 </div>
                 <ul class="space-y-3 text-sm text-zinc-400 list-none pl-0">
-                    <li class="flex items-start gap-2">
-                        <span class="text-emerald-500 font-bold">1.</span>
-                        <span>Copy suspicious text patterns or URLs directly from source communications.</span>
-                    </li>
-                    <li class="flex items-start gap-2">
-                        <span class="text-emerald-500 font-bold">2.</span>
-                        <span>Paste raw data inputs inside the monitoring terminal viewport box above.</span>
-                    </li>
-                    <li class="flex items-start gap-2">
-                        <span class="text-emerald-500 font-bold">3.</span>
-                        <span>Analyze output risk indexes to isolate safe components from attack vectors.</span>
-                    </li>
+                    <li class="flex items-start gap-2"><span class="text-emerald-500 font-bold">1.</span> Copy suspicious strings or URLs directly from communications.</li>
+                    <li class="flex items-start gap-2"><span class="text-emerald-500 font-bold">2.</span> Paste raw inputs inside the monitoring terminal box above.</li>
+                    <li class="flex items-start gap-2"><span class="text-emerald-500 font-bold">3.</span> Execute scanning analysis to register updates to your profile node.</li>
                 </ul>
             </div>
 
-            <div class="bg-zinc-900/40 border border-zinc-900 rounded-2xl p-6">
+            <div class="glass-panel rounded-2xl p-6">
                 <div class="flex items-center gap-2 mb-4">
                     <span class="text-cyan-400 text-xl">📋</span>
                     <h3 class="text-lg font-bold text-zinc-200">Defense Guidelines</h3>
                 </div>
                 <ul class="space-y-3 text-sm text-zinc-400 list-none pl-0">
-                    <li class="flex items-start gap-2">
-                        <span class="text-cyan-400">•</span>
-                        <span><strong>Isolate Urgency:</strong> Disregard emails prompting instant financial actions or punitive updates.</span>
-                    </li>
-                    <li class="flex items-start gap-2">
-                        <span class="text-cyan-400">•</span>
-                        <span><strong>Domain Checks:</strong> Look out for subdomains or hidden extensions designed to resemble official bank sites.</span>
-                    </li>
-                    <li class="flex items-start gap-2">
-                        <span class="text-cyan-400">•</span>
-                        <span><strong>Zero Exposure:</strong> Never input structural tokens like OTP elements or transaction PIN pins into untrusted sites.</span>
-                    </li>
+                    <li class="flex items-start gap-2"><span class="text-cyan-400">•</span> <span><strong>Isolate Urgency:</strong> Disregard emails prompting immediate structural financial actions.</span></li>
+                    <li class="flex items-start gap-2"><span class="text-cyan-400">•</span> <span><strong>Domain Checks:</strong> Spot subdomains looking to spoof authentic system gates.</span></li>
                 </ul>
             </div>
 
-            <div class="bg-zinc-900/40 border border-zinc-900 rounded-2xl p-6">
+            <div class="glass-panel rounded-2xl p-6">
                 <div class="flex items-center gap-2 mb-4">
                     <span class="text-amber-500 text-xl">💡</span>
                     <h3 class="text-lg font-bold text-zinc-200">Cyber Intelligence Facts</h3>
                 </div>
                 <div class="space-y-4 text-xs text-zinc-400 leading-relaxed">
-                    <div class="p-3 bg-zinc-950 rounded-xl border border-zinc-800">
-                        ⚡ <strong>Over 90%</strong> of enterprise system baseline data breaches start through highly targeted spear-phishing campaigns.
-                    </div>
-                    <div class="p-3 bg-zinc-950 rounded-xl border border-zinc-800">
-                        🤖 Attackers use advanced text generators to create scam formats with perfect grammar, bypassing traditional email spam filters.
-                    </div>
+                    <div class="p-3 bg-zinc-950/60 rounded-xl border border-zinc-850">⚡ Over 90% of structural corporate system baseline data breaches start via high-context phishing targets.</div>
                 </div>
             </div>
-
         </div>
-
     </div>
 
+    <!-- Script Resource Pipelines -->
     <script src="js/app.js"></script>
     <script>
-        // 1. Dynamic Local Content Analyzer Matrix Rule Processing Engine 
-        async function runThreatAnalysis() {
-            const inputVal = document.getElementById('detector-input').value.trim();
+        async function runLiveBackendAnalysis() {
+            const textPayload = document.getElementById('detector-input').value.trim();
             const loader = document.getElementById('scanner-loader');
             const resultBox = document.getElementById('scanner-result');
 
-            if (!inputVal) return;
+            if (!textPayload) {
+                alert("Please drop a communication threat string before executing terminal scans.");
+                return;
+            }
 
-            // Trigger Interface Processing Animation View States
+            // Visual Setup Update
             resultBox.classList.add('hidden');
             loader.classList.remove('hidden');
 
-            // Simulate parsing pipeline delay parameters
-            setTimeout(async () => {
-                loader.classList.add('hidden');
-                resultBox.classList.remove('hidden', 'bg-emerald-500/10', 'border-emerald-500/30', 'bg-rose-500/10', 'border-rose-500/30');
+            // Send analytical tracking request straight through to the core backend wrapper function in app.js
+            const responseData = await analyzeThreatText(textPayload);
+            
+            loader.classList.add('hidden');
+            resultBox.classList.remove('hidden', 'bg-emerald-500/10', 'border-emerald-500/30', 'bg-rose-500/10', 'border-rose-500/30', 'text-emerald-400', 'text-rose-400');
 
-                // Content evaluation pattern vectors logic check arrays
-                const lowerInput = inputVal.toLowerCase();
-                const dangerKeywords = ['sbi-security', 'verify now', 'otp', 'processing fee', 'winner', 'account locked', 'free credit'];
-                
-                let attackScore = 15; // Baseline static variance metrics
-                if(dangerKeywords.some(keyword => lowerInput.includes(keyword))) {
-                    attackScore = 88;
-                } else if(lowerInput.includes('http://') || lowerInput.includes('.net') || lowerInput.includes('.xyz')) {
-                    attackScore = 65;
-                }
-
-                // Render execution evaluation logic nodes to DOM
-                if(attackScore >= 60) {
+            if (responseData && responseData.status === "success") {
+                // If backend registers target prediction vector as malicious scam
+                if (responseData.prediction === "scam") {
                     resultBox.classList.add('bg-rose-500/10', 'border-rose-500/30', 'text-rose-400');
                     resultBox.innerHTML = `
                         <div class="flex items-center gap-3 mb-2">
                             <span class="text-2xl">🚨</span>
-                            <h4 class="text-lg font-bold">Threat Indicators Captured (Score: ${attackScore}%)</h4>
+                            <h4 class="text-lg font-bold">Threat Indicators Captured (Vector: Malicious Malware/Scam)</h4>
                         </div>
-                        <p class="text-sm text-zinc-300">This item presents anomalies commonly found in engineering exploits. Do not open tracking targets or supply verification strings.</p>
+                        <p class="text-sm text-zinc-300">This communication matches highly verified engineering threat exploit configurations. Disregard sender credentials instantly.</p>
                     `;
                 } else {
+                    // Legitimate assessment output matching clear records
                     resultBox.classList.add('bg-emerald-500/10', 'border-emerald-500/30', 'text-emerald-400');
                     resultBox.innerHTML = `
                         <div class="flex items-center gap-3 mb-2">
                             <span class="text-2xl">🛡️</span>
-                            <h4 class="text-lg font-bold">Nominal Parameters Validated (Score: ${attackScore}%)</h4>
+                            <h4 class="text-lg font-bold">Nominal System Profile Validated (Vector: Clear/Legitimate)</h4>
                         </div>
-                        <p class="text-sm text-zinc-300">No malicious intent markers detected. However, remain vigilant and verify sender credentials independently before clicking any attachments.</p>
+                        <p class="text-sm text-zinc-300">Linguistic patterns register as secure. Continue monitoring with independent verification rules.</p>
                     `;
                 }
-
-                // 2. Data Sync Hook: Log telemetry query to system backend to update user XP parameters
-                try {
-                    await fetch('/api/user/log-scan', {
-                        method: 'POST',
-                        headers: {
-                            'Content-Type': 'application/json',
-                            'Authorization': `Bearer ${localStorage.getItem('token')}`
-                        },
-                        body: JSON.stringify({ payloadLength: inputVal.length, score: attackScore })
-                    });
-                } catch(e) {
-                    console.warn("Telemetry backend link unreached. Storing scan metrics locally.");
+                
+                // Hot reload active navbar point gauges to dynamically display updated XP awards from your backend
+                if(localStorage.getItem("access")) {
+                     const res = await authorizedFetch("/profile/");
+                     if (res && res.ok) {
+                         const profile = await res.json();
+                         if(document.getElementById("telemetry-xp")) {
+                             document.getElementById("telemetry-xp").textContent = `${profile.points} XP`;
+                         }
+                     }
                 }
-
-            }, 1800);
+            } else {
+                // Connection or runtime validation exception logic
+                resultBox.classList.add('bg-zinc-900', 'border-zinc-800', 'text-zinc-400');
+                resultBox.innerHTML = `
+                    <h4 class="text-sm font-bold font-mono">⚠️ Core Systems Link Interrupted</h4>
+                    <p class="text-xs text-zinc-500 mt-1">Failed to read analytics from the active backend server configuration loop.</p>
+                `;
+            }
         }
     </script>
 </body>
