@@ -12,7 +12,6 @@ def scam_detect_view(request):
     """
     Detect if input text is a scam or legitimate
     """
-    # Get the text from request
     text = request.data.get('text') or request.data.get('message')
     
     if not text:

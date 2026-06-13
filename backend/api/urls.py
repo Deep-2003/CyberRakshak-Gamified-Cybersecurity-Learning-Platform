@@ -17,5 +17,4 @@ urlpatterns = [
     path("refresh/", TokenRefreshView.as_view()),
     path("profile/", profile),
     path("leaderboard/", leaderboard)
-    # More endpoints will be added later
 ]
