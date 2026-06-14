@@ -3,186 +3,200 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Leaderboard - CyberRakshak</title>
+    <title>Global Matrix Rankings - CyberRakshak</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
 </head>
-<body class="bg-zinc-950 text-zinc-200 antialiased">
+<body class="bg-zinc-950 text-zinc-200 antialiased animated-bg">
 
-    <nav class="bg-black border-b border-zinc-900 px-6 py-4 flex justify-between items-center sticky top-0 z-50">
-        <a href="index.html" class="flex items-center gap-3">
-            <div class="w-9 h-9 bg-emerald-500 rounded-2xl flex items-center justify-center text-2xl">🛡️</div>
-            <span class="title-font text-2xl font-bold neon-green">CYBERRAKSHAK</span>
+    <nav class="bg-black/75 backdrop-blur-md border-b border-zinc-900/80 px-6 py-4 flex justify-between items-center sticky top-0 z-50">
+        
+        <a href="index.html" class="flex items-center gap-4 group">
+            <div class="relative w-14 h-14 bg-black border border-emerald-500/20 rounded-2xl flex items-center justify-center shadow-xl shadow-emerald-950/40 group-hover:border-emerald-400/60 transition-all duration-500">
+                <div class="absolute inset-0 rounded-2xl bg-gradient-to-tr from-emerald-500/10 to-cyan-500/0 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+                <svg class="w-10 h-10 filter drop-shadow-[0_0_6px_rgba(16,185,129,0.4)] group-hover:drop-shadow-[0_0_12px_rgba(52,211,153,0.7)] group-hover:rotate-[360deg] transition-all duration-700 ease-out" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <circle cx="50" cy="50" r="44" stroke="#10b981" stroke-width="1.5" stroke-dasharray="8 6 12 4" stroke-opacity="0.3" />
+                    <circle cx="50" cy="50" r="44" stroke="#34d399" stroke-width="2" stroke-dasharray="40 120" stroke-linecap="round" />
+                    <path d="M50 12L80 25V52C80 72.5 67 87.5 50 91C33 87.5 20 72.5 20 52V25L50 12Z" stroke="url(#shield_glow_gradient)" stroke-width="4.5" stroke-linejoin="round" fill="#030305" />
+                    <path d="M50 20V83M29 38H71M24 54H76M30 70H70" stroke="#047857" stroke-width="1.5" stroke-opacity="0.6" stroke-dasharray="3 3" />
+                    <path d="M36 50L46 59L64 39" stroke="#34d399" stroke-width="5" stroke-linecap="round" stroke-linejoin="round" />
+                    <circle cx="46" cy="59" r="3" fill="#ffffff" class="animate-ping" style="transform-origin: 46px 59px;" />
+                    <circle cx="64" cy="39" r="3" fill="#06b6d4" />
+                    <defs>
+                        <linearGradient id="shield_glow_gradient" x1="50" y1="12" x2="50" y2="91" gradientUnits="userSpaceOnUse">
+                            <stop offset="0%" stop-color="#34d399" />
+                            <stop offset="50%" stop-color="#10b981" />
+                            <stop offset="100%" stop-color="#06b6d4" />
+                        </linearGradient>
+                    </defs>
+                </svg>
+            </div>
+            <div class="flex flex-col select-none">
+                <div class="flex items-center gap-1">
+                    <span class="title-font text-2xl font-black tracking-wider bg-clip-text text-transparent bg-gradient-to-r from-white via-zinc-200 to-zinc-400 leading-none group-hover:from-emerald-400 group-hover:to-teal-300 transition-all duration-300">CYBER</span>
+                    <span class="title-font text-2xl font-black tracking-wider neon-green leading-none">RAKSHAK</span>
+                </div>
+                <div class="flex items-center gap-1.5 mt-1">
+                    <span class="w-1.5 h-1.5 bg-emerald-500 rounded-full animate-pulse"></span>
+                    <span class="text-[9px] font-mono tracking-[0.26em] text-zinc-500 font-bold uppercase group-hover:text-zinc-400 transition-colors duration-300">DEFENSIVE INTEL NODE</span>
+                </div>
+            </div>
         </a>
-        <div class="flex gap-8 text-sm font-medium">
+
+        <div class="hidden md:flex gap-8 text-sm font-medium tracking-wide">
             <a href="dashboard.html" class="hover:text-emerald-400 transition-colors">Dashboard</a>
             <a href="ai-detector.html" class="hover:text-emerald-400 transition-colors">AI Detector</a>
             <a href="simulations.html" class="hover:text-emerald-400 transition-colors">Simulations</a>
             <a href="leaderboard.html" class="text-emerald-400">Leaderboard</a>
         </div>
-        <div onclick="logout()" class="cursor-pointer w-9 h-9 bg-zinc-700 hover:bg-red-500/20 rounded-2xl flex items-center justify-center transition-colors">👤</div>
+
+        <div class="flex items-center gap-4">
+            <div class="hidden sm:flex flex-col text-right">
+                <span id="telemetry-username" class="text-xs font-bold font-mono text-zinc-400">Syncing Node...</span>
+                <span id="telemetry-xp" class="text-[10px] text-emerald-400 font-mono">---- XP</span>
+            </div>
+            <div onclick="window.logout()" class="cursor-pointer w-10 h-10 bg-zinc-900 border border-zinc-800 rounded-2xl flex items-center justify-center text-zinc-400 hover:text-emerald-400 hover:border-emerald-500/30 transition-all duration-200">
+                👤
+            </div>
+        </div>
     </nav>
 
-    <div class="max-w-4xl mx-auto px-6 py-12">
+    <div class="max-w-4xl mx-auto px-6 py-12 relative z-10">
         
-        <div class="text-center mb-16">
-            <h2 class="text-5xl font-bold title-font mb-3">🏆 Global Agent Standings</h2>
-            <p class="text-xl text-zinc-400">Compare completion velocity metrics and outrank concurrent security operational logs.</p>
+        <div class="mb-12">
+            <h2 class="text-5xl font-bold title-font mb-3">🏆 Global Leaderboard</h2>
+            <p class="text-xl text-zinc-400">Track and cross-examine operational performance telemetry matrices among grid interceptors globally.</p>
         </div>
 
-        <div class="grid grid-cols-3 gap-4 items-end max-w-2xl mx-auto mb-12 text-center">
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-12 items-end">
             
-            <div class="bg-zinc-900/60 border border-zinc-800 rounded-2xl p-4 flex flex-col items-center shadow-lg transform hover:-translate-y-1 transition duration-300">
-                <div class="w-12 h-12 rounded-full border-2 border-zinc-400 flex items-center justify-center bg-zinc-800 text-lg font-bold mb-2 text-zinc-300">2</div>
-                <div id="podium-2-name" class="font-bold text-sm text-zinc-300 truncate w-full">Loading...</div>
-                <div id="podium-2-xp" class="text-xs text-zinc-500 font-mono mt-1">-- XP</div>
+            <div class="glass-panel rounded-2xl p-6 text-center order-2 md:order-1 border border-zinc-900/60 bg-zinc-950/20">
+                <div class="text-3xl mb-2">🥈</div>
+                <div id="podium-2-name" class="font-bold text-zinc-300 font-mono text-base truncate">Fetching...</div>
+                <div class="text-xs text-zinc-500 font-mono mt-1">RANK #2 OPERATOR</div>
+                <div id="podium-2-xp" class="mt-3 inline-block px-3 py-1 bg-zinc-900 border border-zinc-800 rounded-full text-xs font-bold font-mono text-zinc-400">---- XP</div>
             </div>
 
-            <div class="bg-zinc-900 border-2 border-emerald-500/40 rounded-2xl p-6 flex flex-col items-center shadow-2xl shadow-emerald-500/5 transform hover:-translate-y-2 transition duration-300 relative -top-4">
-                <div class="absolute -top-5 text-2xl animate-bounce">👑</div>
-                <div class="w-14 h-14 rounded-full border-2 border-amber-400 flex items-center justify-center bg-zinc-800 text-xl font-bold mb-2 text-amber-400">1</div>
-                <div id="podium-1-name" class="font-extrabold text-emerald-400 truncate w-full">Loading...</div>
-                <div id="podium-1-xp" class="text-xs text-zinc-400 font-mono font-bold mt-1">-- XP</div>
+            <div class="glass-panel rounded-3xl p-8 text-center order-1 md:order-2 border-2 border-emerald-500/20 bg-zinc-950/40 relative shadow-2xl shadow-emerald-950/20 md:scale-105">
+                <div class="absolute -top-4 left-1/2 -translate-x-1/2 px-4 py-1 bg-emerald-500 text-black text-[10px] font-black font-mono tracking-widest uppercase rounded-full shadow-lg">GRID APEX</div>
+                <div class="text-5xl mb-3">👑</div>
+                <div id="podium-1-name" class="font-black text-white font-mono text-xl truncate">Fetching...</div>
+                <div class="text-xs text-emerald-400 font-mono mt-1 tracking-wider font-bold">RANK #1 OPERATOR</div>
+                <div id="podium-1-xp" class="mt-4 inline-block px-4 py-1.5 bg-emerald-950/50 border border-emerald-900/60 rounded-full text-sm font-bold font-mono text-emerald-400">---- XP</div>
             </div>
 
-            <div class="bg-zinc-900/60 border border-zinc-800 rounded-2xl p-4 flex flex-col items-center shadow-lg transform hover:-translate-y-1 transition duration-300">
-                <div class="w-12 h-12 rounded-full border-2 border-amber-700 flex items-center justify-center bg-zinc-800 text-lg font-bold mb-2 text-amber-600">3</div>
-                <div id="podium-3-name" class="font-bold text-sm text-zinc-300 truncate w-full">Loading...</div>
-                <div id="podium-3-xp" class="text-xs text-zinc-500 font-mono mt-1">-- XP</div>
+            <div class="glass-panel rounded-2xl p-6 text-center order-3 border border-zinc-900/60 bg-zinc-950/20">
+                <div class="text-3xl mb-2">🥉</div>
+                <div id="podium-3-name" class="font-bold text-zinc-300 font-mono text-base truncate">Fetching...</div>
+                <div class="text-xs text-zinc-500 font-mono mt-1">RANK #3 OPERATOR</div>
+                <div id="podium-3-xp" class="mt-3 inline-block px-3 py-1 bg-zinc-900 border border-zinc-800 rounded-full text-xs font-bold font-mono text-zinc-400">---- XP</div>
             </div>
-            
+
         </div>
 
-        <div class="bg-zinc-900 border border-zinc-800 rounded-3xl p-6 md:p-8 shadow-2xl">
-            <div class="flex justify-between items-center border-b border-zinc-800/80 pb-4 mb-4 text-xs font-mono tracking-wider font-bold text-zinc-500 uppercase">
-                <div class="flex items-center gap-6">
-                    <span class="w-8 text-center">Rank</span>
-                    <span>Defensive Agent Node</span>
+        <div class="glass-panel rounded-3xl p-6 md:p-8 border border-zinc-900/80 shadow-2xl bg-zinc-950/30">
+            <div class="flex justify-between items-center border-b border-zinc-900 pb-4 mb-6">
+                <span class="text-xs font-mono font-bold tracking-widest text-zinc-500 uppercase">OPERATOR CALLSIGN INDEX</span>
+                <span class="text-xs font-mono font-bold tracking-widest text-zinc-500 uppercase">SCORE VALUE</span>
+            </div>
+            
+            <div id="leaderboard-rows" class="space-y-4">
+                <div class="animate-pulse flex justify-between items-center p-5 bg-zinc-900/20 border border-zinc-900 rounded-2xl">
+                    <div class="h-4 bg-zinc-800 rounded w-1/3"></div>
+                    <div class="h-4 bg-zinc-800 rounded w-12"></div>
                 </div>
-                <span>Experience Metric Balance</span>
-            </div>
-
-            <div id="leaderboard-rows" class="space-y-2">
-                <p class="text-zinc-500 text-sm font-mono italic text-center py-6">Aggregating telemetry nodes status grids...</p>
-            </div>
-
-            <div class="border-t border-zinc-800/80 mt-6 pt-6">
-                <div class="p-4 bg-emerald-500/10 border border-emerald-500/30 rounded-xl flex justify-between items-center shadow-inner">
-                    <div class="flex items-center gap-6">
-                        <span id="current-user-rank-index" class="w-8 text-center font-mono font-bold text-emerald-400 text-sm">#--</span>
-                        <div>
-                            <span id="current-user-rank-name" class="font-bold text-zinc-200">Retrieving profile ID...</span>
-                            <span class="ml-2 px-2 py-0.5 bg-emerald-500 text-black text-[9px] font-mono rounded font-bold uppercase tracking-widest">You</span>
-                        </div>
-                    </div>
-                    <span id="current-user-rank-xp" class="font-mono font-bold text-emerald-400 text-sm">-- XP</span>
+                <div class="animate-pulse flex justify-between items-center p-5 bg-zinc-900/20 border border-zinc-900 rounded-2xl">
+                    <div class="h-4 bg-zinc-800 rounded w-1/4"></div>
+                    <div class="h-4 bg-zinc-800 rounded w-12"></div>
+                </div>
+                <div class="animate-pulse flex justify-between items-center p-5 bg-zinc-900/20 border border-zinc-900 rounded-2xl">
+                    <div class="h-4 bg-zinc-800 rounded w-1/2"></div>
+                    <div class="h-4 bg-zinc-800 rounded w-12"></div>
                 </div>
             </div>
         </div>
+
+        <p class="text-center font-mono text-[10px] tracking-wider text-zinc-600 mt-10 uppercase">
+            LIVE MATRIX REGISTRY SYNCHRONIZED REPEATEDLY // SECURITY RECORDS REFRESH CONTINUOUSLY
+        </p>
 
     </div>
 
     <script src="js/app.js"></script>
     <script>
-        // Static array defining sandbox base entries to prevent layout gaps
-        const staticGlobalCompetitors = [
-            { username: "Kali_Rakshak", xp: 4850 },
-            { username: "ZeroDay_Defuser", xp: 4120 },
-            { username: "Cyber_Sentinel", xp: 3900 },
-            { username: "Byte_Shield", xp: 2850 },
-            { username: "Phish_Hooker", xp: 2100 },
-            { username: "Root_Guider", xp: 1950 },
-            { username: "Proxy_Filter", xp: 1400 }
-        ];
-
-        // 1. Telemetry Aggregation Router Sequence
-        async function buildLeaderboardMatrix() {
-            let userProfile = { username: "Local_Agent", xp: 0 };
+        document.addEventListener("DOMContentLoaded", async () => {
+            const rowContainer = document.getElementById("leaderboard-rows");
             
-            // Extract the user data payload directly from your app.js storage instances
-            if (typeof getUserTelemetry === 'function') {
-                userProfile = getUserTelemetry();
-            }
+            const p1Name = document.getElementById("podium-1-name");
+            const p1Xp = document.getElementById("podium-1-xp");
+            const p2Name = document.getElementById("podium-2-name");
+            const p2Xp = document.getElementById("podium-2-xp");
+            const p3Name = document.getElementById("podium-3-name");
+            const p3Xp = document.getElementById("podium-3-xp");
 
-            try {
-                const response = await fetch('/api/user/leaderboard', {
-                    method: 'GET',
-                    headers: { 'Authorization': `Bearer ${localStorage.getItem('token')}` }
-                });
-                
-                if (response.ok) {
-                    const dynamicData = await response.json();
-                    processStandings(dynamicData, userProfile);
-                } else {
-                    processStandings(staticGlobalCompetitors, userProfile);
+            // Explicitly verify the initialization status of window global fetch utilities
+            if (typeof window.authorizedFetch === "function") {
+                try {
+                    const response = await window.authorizedFetch("/leaderboard/");
+                    if (response && response.ok) {
+                        const scoreData = await response.json();
+                        
+                        rowContainer.innerHTML = "";
+                        
+                        if (scoreData && scoreData.length > 0) {
+                            // Assign values to podium positions with defensive structural properties
+                            if (scoreData[0]) {
+                                p1Name.textContent = scoreData[0].username || scoreData[0].user;
+                                p1Xp.textContent = `${scoreData[0].xp || scoreData[0].total_xp || 0} XP`;
+                            }
+                            if (scoreData[1]) {
+                                p2Name.textContent = scoreData[1].username || scoreData[1].user;
+                                p2Xp.textContent = `${scoreData[1].xp || scoreData[1].total_xp || 0} XP`;
+                            } else {
+                                p2Name.textContent = "Empty Node";
+                                p2Xp.textContent = "0 XP";
+                            }
+                            if (scoreData[2]) {
+                                p3Name.textContent = scoreData[2].username || scoreData[2].user;
+                                p3Xp.textContent = `${scoreData[2].xp || scoreData[2].total_xp || 0} XP`;
+                            } else {
+                                p3Name.textContent = "Empty Node";
+                                p3Xp.textContent = "0 XP";
+                            }
+
+                            // Generate historical matrix data elements dynamically
+                            scoreData.forEach((operator, index) => {
+                                const row = document.createElement("div");
+                                row.className = "flex justify-between items-center p-5 bg-zinc-900/40 border border-zinc-900/80 rounded-2xl hover:border-zinc-800 transition-colors duration-150 font-mono text-sm";
+                                
+                                const currentScore = operator.xp || operator.total_xp || 0;
+                                const currentName = operator.username || operator.user || "Unknown Agent";
+                                
+                                row.innerHTML = `
+                                    <div class="flex items-center gap-4">
+                                        <span class="text-xs font-bold ${index < 3 ? 'text-emerald-400' : 'text-zinc-600'} w-6">#${index + 1}</span>
+                                        <span class="text-zinc-200 font-semibold">${currentName}</span>
+                                    </div>
+                                    <span class="font-bold text-emerald-400">${currentScore} XP</span>
+                                `;
+                                rowContainer.appendChild(row);
+                            });
+                        } else {
+                            rowContainer.innerHTML = `<div class="text-center py-6 text-zinc-500 font-mono text-xs">NO ACTIVE AGENT RECORD LOGS DISCOVERED IN THE TARGET DATABASE MESH.</div>`;
+                        }
+                    } else {
+                        rowContainer.innerHTML = `<div class="text-center py-6 text-rose-500 font-mono text-xs">CRITICAL REJECTION: BACKEND METRICS GATE DISALLOWED CONTEXT TRANSFER.</div>`;
+                    }
+                } catch (error) {
+                    console.error("Leaderboard component runtime rendering error:", error);
+                    rowContainer.innerHTML = `<div class="text-center py-6 text-amber-500 font-mono text-xs">TRANSMISSION FAULT: CONNECTION BLOCKED OR RETRYING ROUTE HANDSHAKE.</div>`;
                 }
-            } catch (err) {
-                console.warn("Database sync dropped. Compiling standings matrix locally using static values.");
-                processStandings(staticGlobalCompetitors, userProfile);
-            }
-        }
-
-        // 2. Rank Processing Strategy Engine
-        function processStandings(competitorsList, activeUser) {
-            // Append the active session inside sorting arrays if not natively present
-            const missingFromList = !competitorsList.some(c => c.username.toLowerCase() === activeUser.username.toLowerCase());
-            if (missingFromList) {
-                competitorsList.push({ username: activeUser.username, xp: activeUser.xp });
             } else {
-                // Ensure the active user's score from local storage overrides static list variations
-                const userIndex = competitorsList.findIndex(c => c.username.toLowerCase() === activeUser.username.toLowerCase());
-                if (userIndex !== -1) competitorsList[userIndex].xp = activeUser.xp;
+                console.error("Critical Orchestration Instability: window.authorizedFetch mapping layer missing.");
+                rowContainer.innerHTML = `<div class="text-center py-6 text-rose-500 font-mono text-xs">SYSTEM CORRUPTION: BASE ENGINE SCRIPT LOAD SEQUENCE INTERRUPTED.</div>`;
             }
-
-            // Sort descending by XP level parameters
-            competitorsList.sort((a, b) => b.xp - a.xp);
-
-            // 3. Populate Podium Layout Nodes
-            if (competitorsList[0]) {
-                document.getElementById('podium-1-name').textContent = competitorsList[0].username;
-                document.getElementById('podium-1-xp').textContent = `${competitorsList[0].xp} XP`;
-            }
-            if (competitorsList[1]) {
-                document.getElementById('podium-2-name').textContent = competitorsList[1].username;
-                document.getElementById('podium-2-xp').textContent = `${competitorsList[1].xp} XP`;
-            }
-            if (competitorsList[2]) {
-                document.getElementById('podium-3-name').textContent = competitorsList[2].username;
-                document.getElementById('podium-3-xp').textContent = `${competitorsList[2].xp} XP`;
-            }
-
-            // 4. Append Remaining Rows dynamically to Scoreboard Area Grid
-            const targetContainer = document.getElementById('leaderboard-rows');
-            targetContainer.innerHTML = ''; // Strip default processing notification tags
-
-            competitorsList.forEach((competitor, idx) => {
-                const globalRankNum = idx + 1;
-                const isTargetUser = competitor.username.toLowerCase() === activeUser.username.toLowerCase();
-                
-                // Track active user location to synchronize the fixed lower dashboard summary bar
-                if (isTargetUser) {
-                    document.getElementById('current-user-rank-index').textContent = `#${globalRankNum}`;
-                    document.getElementById('current-user-rank-name').textContent = competitor.username;
-                    document.getElementById('current-user-rank-xp').textContent = `${competitor.xp} XP`;
-                }
-
-                // Render structure maps inside the table stack
-                const rowElement = document.createElement('div');
-                rowElement.className = `flex justify-between items-center p-4 rounded-xl border transition-colors ${isTargetUser ? 'bg-emerald-500/5 border-emerald-500/20' : 'bg-zinc-950/40 border-zinc-900/60 hover:bg-zinc-900/40'}`;
-                rowElement.innerHTML = `
-                    <div class="flex items-center gap-6">
-                        <span class="w-8 text-center font-mono text-xs font-bold ${globalRankNum <= 3 ? 'text-emerald-400' : 'text-zinc-600'}">#${globalRankNum}</span>
-                        <span class="text-sm font-medium ${isTargetUser ? 'text-emerald-400 font-bold' : 'text-zinc-300'}">${competitor.username}</span>
-                    </div>
-                    <span class="font-mono text-xs font-bold ${isTargetUser ? 'text-emerald-400' : 'text-zinc-400'}">${competitor.xp} XP</span>
-                `;
-                targetContainer.appendChild(rowElement);
-            });
-        }
-
-        // Initialize execution on content readiness pass
-        window.onload = buildLeaderboardMatrix;
+        });
     </script>
 </body>
 </html>
