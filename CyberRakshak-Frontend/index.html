@@ -3,137 +3,123 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>CyberRakshak - Next-Gen Autonomous Security Training Platform</title>
+    <title>CyberRakshak - Autonomous Cyber Defense Platform</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
 </head>
-<body class="bg-zinc-950 text-zinc-200 antialiased selection:bg-emerald-500 selection:text-black">
+<body class="bg-zinc-950 text-zinc-200 antialiased animated-bg min-h-screen flex flex-col justify-between">
 
-    <!-- Global Application Navigation Bar -->
-    <nav class="bg-black/80 backdrop-blur-md border-b border-zinc-900 px-6 py-4 flex justify-between items-center sticky top-0 z-50">
-        <a href="index.html" class="flex items-center gap-3 group">
-            <div class="w-9 h-9 bg-emerald-500 rounded-2xl flex items-center justify-center text-2xl shadow-lg shadow-emerald-500/20 group-hover:scale-105 transition">🛡️</div>
-            <span class="title-font text-2xl font-bold neon-green">CYBERRAKSHAK</span>
+    <nav class="bg-black/75 backdrop-blur-md border-b border-zinc-900/80 px-6 py-4 flex justify-between items-center sticky top-0 z-50">
+        
+        <a href="index.html" class="flex items-center gap-4 group">
+            <div class="relative w-14 h-14 bg-black border border-emerald-500/20 rounded-2xl flex items-center justify-center shadow-xl shadow-emerald-950/40 group-hover:border-emerald-400/60 transition-all duration-500">
+                <div class="absolute inset-0 rounded-2xl bg-gradient-to-tr from-emerald-500/10 to-cyan-500/0 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+                <svg class="w-10 h-10 filter drop-shadow-[0_0_6px_rgba(16,185,129,0.4)] group-hover:drop-shadow-[0_0_12px_rgba(52,211,153,0.7)] group-hover:rotate-[360deg] transition-all duration-700 ease-out" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <circle cx="50" cy="50" r="44" stroke="#10b981" stroke-width="1.5" stroke-dasharray="8 6 12 4" stroke-opacity="0.3" />
+                    <circle cx="50" cy="50" r="44" stroke="#34d399" stroke-width="2" stroke-dasharray="40 120" stroke-linecap="round" />
+                    <path d="M50 12L80 25V52C80 72.5 67 87.5 50 91C33 87.5 20 72.5 20 52V25L50 12Z" stroke="url(#shield_glow_gradient)" stroke-width="4.5" stroke-linejoin="round" fill="#030305" />
+                    <path d="M50 20V83M29 38H71M24 54H76M30 70H70" stroke="#047857" stroke-width="1.5" stroke-opacity="0.6" stroke-dasharray="3 3" />
+                    <path d="M36 50L46 59L64 39" stroke="#34d399" stroke-width="5" stroke-linecap="round" stroke-linejoin="round" />
+                    <circle cx="46" cy="59" r="3" fill="#ffffff" class="animate-ping" style="transform-origin: 46px 59px;" />
+                    <circle cx="64" cy="39" r="3" fill="#06b6d4" />
+                    <defs>
+                        <linearGradient id="shield_glow_gradient" x1="50" y1="12" x2="50" y2="91" gradientUnits="userSpaceOnUse">
+                            <stop offset="0%" stop-color="#34d399" />
+                            <stop offset="50%" stop-color="#10b981" />
+                            <stop offset="100%" stop-color="#06b6d4" />
+                        </linearGradient>
+                    </defs>
+                </svg>
+            </div>
+            <div class="flex flex-col select-none">
+                <div class="flex items-center gap-1">
+                    <span class="title-font text-2xl font-black tracking-wider bg-clip-text text-transparent bg-gradient-to-r from-white via-zinc-200 to-zinc-400 leading-none group-hover:from-emerald-400 group-hover:to-teal-300 transition-all duration-300">CYBER</span>
+                    <span class="title-font text-2xl font-black tracking-wider neon-green leading-none">RAKSHAK</span>
+                </div>
+                <div class="flex items-center gap-1.5 mt-1">
+                    <span class="w-1.5 h-1.5 bg-emerald-500 rounded-full animate-pulse"></span>
+                    <span class="text-[9px] font-mono tracking-[0.26em] text-zinc-500 font-bold uppercase group-hover:text-zinc-400 transition-colors duration-300">DEFENSIVE INTEL NODE</span>
+                </div>
+            </div>
         </a>
-        <div class="hidden md:flex gap-8 text-sm font-medium tracking-wide">
-            <a href="dashboard.html" class="hover:text-emerald-400 transition-colors">Dashboard</a>
-            <a href="ai-detector.html" class="hover:text-emerald-400 transition-colors">AI Detector</a>
-            <a href="simulations.html" class="hover:text-emerald-400 transition-colors">Simulations</a>
-            <a href="leaderboard.html" class="hover:text-emerald-400 transition-colors">Leaderboard</a>
-        </div>
-        <!-- Profile Identity Badge / Trigger Context -->
-        <div class="flex items-center gap-4">
-            <div class="hidden sm:flex flex-col text-right">
-                <span id="telemetry-username" class="text-sm font-bold font-mono text-zinc-300">Agent_Initializing...</span>
-                <span id="telemetry-xp" class="text-xs text-emerald-400 font-mono">0000 XP</span>
-            </div>
-            <div onclick="logout()" class="cursor-pointer w-10 h-10 bg-zinc-900 hover:bg-red-500/10 border border-zinc-800 hover:border-red-500/30 rounded-2xl flex items-center justify-center transition-all duration-300">
-                <i class="fa-solid var(--fa-user, \f007) text-zinc-400 hover:text-red-400 text-sm"></i>
-            </div>
+
+        <div id="navigation-actions" class="flex items-center gap-4">
+            <a href="login.html" class="px-5 py-2.5 rounded-xl border border-zinc-800 text-sm font-semibold hover:border-emerald-500/30 hover:text-emerald-400 transition-all duration-200">
+                Sign In
+            </a>
+            <a href="register.html" class="px-5 py-2.5 rounded-xl bg-emerald-500 hover:bg-emerald-400 text-black text-sm font-extrabold shadow-lg shadow-emerald-950/20 transition-all duration-200">
+                Join Matrix
+            </a>
         </div>
     </nav>
 
-    <!-- Hero Workspace Arena Section -->
-    <header class="relative overflow-hidden py-24 md:py-32 border-b border-zinc-900 bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-emerald-950/20 via-zinc-950 to-zinc-950">
-        <div class="max-w-6xl mx-auto px-6 text-center relative z-10">
-            <div class="inline-flex items-center gap-2 px-4 py-2 bg-zinc-900 border border-zinc-800 rounded-full text-xs font-mono tracking-widest text-emerald-400 uppercase mb-6 shadow-xl">
-                <span class="w-2 h-2 bg-emerald-500 rounded-full animate-ping"></span> Defensive Matrix Active
-            </div>
-            <h1 class="text-5xl md:text-7xl font-extrabold tracking-tight title-font mb-6 leading-tight">
-                Empower Your Tactical <br>
-                <span class="bg-clip-text text-transparent bg-gradient-to-r from-emerald-400 to-teal-200">Cyber Resilience</span>
-            </h1>
-            <p class="text-lg md:text-xl text-zinc-400 max-w-2xl mx-auto mb-10 leading-relaxed">
-                Step into gamified zero-day simulations, decrypt multi-stage attack vectors, and clean anomalous payloads using automated AI verification models.
-            </p>
-            <div class="flex flex-col sm:flex-row justify-center items-center gap-4">
-                <a href="dashboard.html" class="w-full sm:w-auto px-8 py-4 bg-emerald-500 hover:bg-emerald-400 text-black font-bold tracking-wide rounded-2xl shadow-lg shadow-emerald-500/20 hover:shadow-emerald-500/30 transition duration-300 text-center">
-                    Enter Headquarters
-                </a>
-                <a href="ai-detector.html" class="w-full sm:w-auto px-8 py-4 bg-zinc-900 hover:bg-zinc-800 border border-zinc-800 text-zinc-200 font-bold tracking-wide rounded-2xl transition duration-300 text-center">
-                    Analyze Threat Vector
-                </a>
-            </div>
-        </div>
-    </header>
+    <main class="max-w-6xl mx-auto px-6 py-20 flex-grow flex flex-col items-center justify-center text-center relative z-10">
+        <div class="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(16,185,129,0.04),transparent_55%)] pointer-events-none"></div>
 
-    <!-- Core Platform Functional Ecosystem Features Grid -->
-    <section class="max-w-6xl mx-auto px-6 py-24">
-        <div class="mb-16 text-center md:text-left">
-            <h2 class="text-3xl font-bold title-font mb-2">🛡️ Cyber Operations Hub</h2>
-            <p class="text-zinc-500">Unify operational awareness and interactive threat response nodes instantly.</p>
+        <div class="inline-flex items-center gap-2 px-4 py-1.5 bg-zinc-950/80 border border-zinc-900 rounded-full text-xs font-mono text-zinc-400 tracking-wide mb-8">
+            <span class="w-2 h-2 bg-emerald-500 rounded-full animate-pulse"></span>
+            <span>SYSTEM CONSTRAINTS VERSION 3.1 INITIALIZED</span>
         </div>
 
-        <div class="grid md:grid-cols-3 gap-8">
-            <!-- Functional Component Module Card: Threat Scanner Entry -->
-            <div class="bg-zinc-900/40 border border-zinc-900 rounded-3xl p-8 card-hover flex flex-col justify-between">
-                <div>
-                    <div class="w-12 h-12 bg-emerald-500/10 rounded-2xl border border-emerald-500/20 flex items-center justify-center text-xl text-emerald-400 mb-6">🔍</div>
-                    <h3 class="text-xl font-bold mb-3 tracking-wide text-zinc-100">AI Threat Detector</h3>
-                    <p class="text-zinc-400 text-sm leading-relaxed mb-6">
-                        Sanitize structural vectors from untrusted files, emails, or links using real-time dynamic semantic analysis routines.
-                    </p>
-                </div>
-                <a href="ai-detector.html" class="text-xs font-mono text-emerald-400 font-bold hover:text-emerald-300 flex items-center gap-2 group/link">
-                    Launch Parser <span class="group-hover/link:translate-x-1 transition-transform">→</span>
-                </a>
-            </div>
+        <h1 class="text-5xl md:text-7xl font-black tracking-tight text-white mb-6 max-w-4xl leading-tight">
+            Next-Generation Intelligence For <span class="text-transparent bg-clip-text bg-gradient-to-r from-emerald-400 via-teal-300 to-cyan-400 filter drop-shadow-[0_0_15px_rgba(16,185,129,0.2)]">Cyber Defense Training</span>
+        </h1>
+        
+        <p class="text-lg md:text-xl text-zinc-400 max-w-2xl mb-12 leading-relaxed">
+            Protect assets from sophisticated AI threat parameters, test critical interception strategies in native sandboxed environments, and level up your operational matrix tier.
+        </p>
 
-            <!-- Functional Component Module Card: Simulations Lab Entry -->
-            <div class="bg-zinc-900/40 border border-zinc-900 rounded-3xl p-8 card-hover flex flex-col justify-between">
-                <div>
-                    <div class="w-12 h-12 bg-cyan-500/10 rounded-2xl border border-cyan-500/20 flex items-center justify-center text-xl text-cyan-400 mb-6">🎮</div>
-                    <h3 class="text-xl font-bold mb-3 tracking-wide text-zinc-100">Tactical Simulations</h3>
-                    <p class="text-zinc-400 text-sm leading-relaxed mb-6">
-                        Defuse live interactive exercises matching historical social engineering attack pathways, email identity spoofing, and key exploits.
-                    </p>
-                </div>
-                <a href="simulations.html" class="text-xs font-mono text-cyan-400 font-bold hover:text-cyan-300 flex items-center gap-2 group/link">
-                    Initialize Exercise <span class="group-hover/link:translate-x-1 transition-transform">→</span>
-                </a>
-            </div>
+        <div class="flex flex-col sm:flex-row gap-4 justify-center w-full max-w-md mb-20">
+            <a id="primary-cta-button" href="register.html" class="flex-1 py-4 bg-emerald-500 hover:bg-emerald-400 text-black font-extrabold text-base rounded-2xl shadow-xl shadow-emerald-950/40 transition-all duration-200 hover:scale-[1.01] active:scale-[0.99]">
+                Initialize Operator Node
+            </a>
+            <a href="login.html" class="flex-1 py-4 bg-zinc-950/60 hover:bg-zinc-900 border border-zinc-900 hover:border-zinc-800 text-zinc-300 font-bold text-base rounded-2xl transition-all duration-200">
+                Access Security Gate
+            </a>
+        </div>
 
-            <!-- Functional Component Module Card: Leaderboard Entry -->
-            <div class="bg-zinc-900/40 border border-zinc-900 rounded-3xl p-8 card-hover flex flex-col justify-between">
-                <div>
-                    <div class="w-12 h-12 bg-amber-500/10 rounded-2xl border border-amber-500/20 flex items-center justify-center text-xl text-amber-400 mb-6">🏆</div>
-                    <h3 class="text-xl font-bold mb-3 tracking-wide text-zinc-100">Leaderboard Rankings</h3>
-                    <p class="text-zinc-400 text-sm leading-relaxed mb-6">
-                        Compare defensive completion velocity, gather skill experience points, and outrank competitive security analyst logs.
-                    </p>
-                </div>
-                <a href="leaderboard.html" class="text-xs font-mono text-amber-400 font-bold hover:text-amber-300 flex items-center gap-2 group/link">
-                    View Rankings <span class="group-hover/link:translate-x-1 transition-transform">→</span>
-                </a>
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6 w-full text-left border-t border-zinc-900 pt-16">
+            <div class="p-6 bg-zinc-950/20 border border-zinc-900/60 rounded-2xl">
+                <div class="text-xl mb-3">⚡ Neural Threat Isolation</div>
+                <p class="text-sm text-zinc-500 leading-relaxed">Deep processing modules contextually verify text arrays against active malicious telemetry clusters natively.</p>
+            </div>
+            <div class="p-6 bg-zinc-950/20 border border-zinc-900/60 rounded-2xl">
+                <div class="text-xl mb-3">🛡️ Sandbox Simulators</div>
+                <p class="text-sm text-zinc-500 leading-relaxed">Engage live vectors safely inside safe architectural mirrors without impacting regional networks.</p>
+            </div>
+            <div class="p-6 bg-zinc-950/20 border border-zinc-900/60 rounded-2xl">
+                <div class="text-xl mb-3">📈 Verified Performance Tiers</div>
+                <p class="text-sm text-zinc-500 leading-relaxed">Track verification speeds, accumulate operational experience, and gain top rankings on global leaderboards.</p>
             </div>
         </div>
-    </section>
+    </main>
 
-    <!-- Global Threat Intelligence Hub Info Section -->
-    <section class="border-t border-zinc-900 bg-zinc-950/60 py-20">
-        <div class="max-w-4xl mx-auto px-6">
-            <div class="bg-gradient-to-r from-zinc-900 to-black border border-zinc-800 rounded-3xl p-8 md:p-10 shadow-2xl flex flex-col md:flex-row justify-between items-center gap-8">
-                <div class="space-y-3 max-w-lg text-center md:text-left">
-                    <span class="px-3 py-1 bg-red-500/10 text-red-400 rounded-md font-mono text-[10px] uppercase font-bold tracking-wider border border-red-500/20">LIVE THREAT FEED</span>
-                    <h3 class="text-2xl font-bold tracking-wide">Ready to audit operational security?</h3>
-                    <p class="text-sm text-zinc-400 leading-relaxed">
-                        Your defensive choices actively drive system validation logs. Ensure data points remain backed within target requirements prior to testing parameters.
-                    </p>
-                </div>
-                <a href="dashboard.html" class="w-full md:w-auto shrink-0 px-8 py-4 bg-zinc-900 hover:bg-zinc-800 border border-zinc-800 font-bold rounded-2xl transition text-center shadow-lg">
-                    Access Dashboard Console
-                </a>
-            </div>
-        </div>
-    </section>
-
-    <!-- Architecture System Footer Elements -->
-    <footer class="bg-black border-t border-zinc-900 py-12 px-6 text-center text-xs font-mono text-zinc-600 tracking-wider">
-        <p>&copy; 2026 CYBERRAKSHAK OPERATIONAL HUB. ALL RIGHTS RESERVED SECURITY telemetry INSTANCE.</p>
+    <footer class="bg-black/40 border-t border-zinc-900/80 px-6 py-6 text-center text-xs font-mono text-zinc-600 uppercase tracking-widest select-none relative z-10">
+        © 2026 CyberRakshak Ecosystem Array // All Node Cryptographic Standards Retained.
     </footer>
 
-    <!-- Structural App Logic Bind Pass Hook -->
-    <script src="js/app.js"></script>
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            // Hot-swap controls if operator session is already verified locally
+            if (localStorage.getItem("access")) {
+                const navActions = document.getElementById("navigation-actions");
+                const primaryCTA = document.getElementById("primary-cta-button");
+
+                if (navActions) {
+                    navActions.innerHTML = `
+                        <a href="dashboard.html" class="px-5 py-2.5 rounded-xl bg-zinc-900 border border-zinc-800 text-sm font-semibold text-emerald-400 hover:border-emerald-500/20 transition-all duration-200">
+                            Go to Dashboard →
+                        </a>
+                    `;
+                }
+
+                if (primaryCTA) {
+                    primaryCTA.textContent = "Enter Secure Grid Control";
+                    primaryCTA.href = "dashboard.html";
+                }
+            }
+        });
+    </script>
 </body>
 </html>
