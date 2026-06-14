@@ -3,294 +3,195 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Dashboard - CyberRakshak</title>
+    <title>Operator Dashboard - CyberRakshak</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
 </head>
-<body class="bg-zinc-950 text-zinc-200">
+<body class="bg-zinc-950 text-zinc-200 antialiased animated-bg">
 
-    <!-- Navigation Header -->
-    <nav class="bg-black border-b border-emerald-900 px-6 py-4 flex justify-between items-center sticky top-0 z-50">
-        <a href="index.html" class="flex items-center gap-3">
-            <div class="w-9 h-9 bg-emerald-500 rounded-2xl flex items-center justify-center text-2xl">🛡️</div>
-            <span class="title-font text-2xl font-bold neon-green">CYBERRAKSHAK</span>
+    <nav class="bg-black/75 backdrop-blur-md border-b border-zinc-900/80 px-6 py-4 flex justify-between items-center sticky top-0 z-50">
+        
+        <a href="index.html" class="flex items-center gap-4 group">
+            <div class="relative w-14 h-14 bg-black border border-emerald-500/20 rounded-2xl flex items-center justify-center shadow-xl shadow-emerald-950/40 group-hover:border-emerald-400/60 transition-all duration-500">
+                <div class="absolute inset-0 rounded-2xl bg-gradient-to-tr from-emerald-500/10 to-cyan-500/0 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+                <svg class="w-10 h-10 filter drop-shadow-[0_0_6px_rgba(16,185,129,0.4)] group-hover:drop-shadow-[0_0_12px_rgba(52,211,153,0.7)] group-hover:rotate-[360deg] transition-all duration-700 ease-out" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <circle cx="50" cy="50" r="44" stroke="#10b981" stroke-width="1.5" stroke-dasharray="8 6 12 4" stroke-opacity="0.3" />
+                    <circle cx="50" cy="50" r="44" stroke="#34d399" stroke-width="2" stroke-dasharray="40 120" stroke-linecap="round" />
+                    <path d="M50 12L80 25V52C80 72.5 67 87.5 50 91C33 87.5 20 72.5 20 52V25L50 12Z" stroke="url(#shield_glow_gradient)" stroke-width="4.5" stroke-linejoin="round" fill="#030305" />
+                    <path d="M50 20V83M29 38H71M24 54H76M30 70H70" stroke="#047857" stroke-width="1.5" stroke-opacity="0.6" stroke-dasharray="3 3" />
+                    <path d="M36 50L46 59L64 39" stroke="#34d399" stroke-width="5" stroke-linecap="round" stroke-linejoin="round" />
+                    <circle cx="46" cy="59" r="3" fill="#ffffff" class="animate-ping" style="transform-origin: 46px 59px;" />
+                    <circle cx="64" cy="39" r="3" fill="#06b6d4" />
+                    <defs>
+                        <linearGradient id="shield_glow_gradient" x1="50" y1="12" x2="50" y2="91" gradientUnits="userSpaceOnUse">
+                            <stop offset="0%" stop-color="#34d399" />
+                            <stop offset="50%" stop-color="#10b981" />
+                            <stop offset="100%" stop-color="#06b6d4" />
+                        </linearGradient>
+                    </defs>
+                </svg>
+            </div>
+            <div class="flex flex-col select-none">
+                <div class="flex items-center gap-1">
+                    <span class="title-font text-2xl font-black tracking-wider bg-clip-text text-transparent bg-gradient-to-r from-white via-zinc-200 to-zinc-400 leading-none group-hover:from-emerald-400 group-hover:to-teal-300 transition-all duration-300">CYBER</span>
+                    <span class="title-font text-2xl font-black tracking-wider neon-green leading-none">RAKSHAK</span>
+                </div>
+                <div class="flex items-center gap-1.5 mt-1">
+                    <span class="w-1.5 h-1.5 bg-emerald-500 rounded-full animate-pulse"></span>
+                    <span class="text-[9px] font-mono tracking-[0.26em] text-zinc-500 font-bold uppercase group-hover:text-zinc-400 transition-colors duration-300">DEFENSIVE INTEL NODE</span>
+                </div>
+            </div>
         </a>
-        <div class="flex gap-8 text-sm font-medium">
+
+        <div class="hidden md:flex gap-8 text-sm font-medium tracking-wide">
             <a href="dashboard.html" class="text-emerald-400">Dashboard</a>
-            <a href="ai-detector.html" class="hover:text-emerald-400 transition">AI Detector</a>
-            <a href="simulations.html" class="hover:text-emerald-400 transition">Simulations</a>
-            <a href="leaderboard.html" class="hover:text-emerald-400 transition">Leaderboard</a>
+            <a href="ai-detector.html" class="hover:text-emerald-400 transition-colors">AI Detector</a>
+            <a href="simulations.html" class="hover:text-emerald-400 transition-colors">Simulations</a>
+            <a href="leaderboard.html" class="hover:text-emerald-400 transition-colors">Leaderboard</a>
         </div>
-        <div onclick="logout()" class="cursor-pointer w-9 h-9 bg-zinc-700 hover:bg-red-500/20 rounded-2xl flex items-center justify-center transition">👤</div>
+
+        <div class="flex items-center gap-4">
+            <div class="hidden sm:flex flex-col text-right">
+                <span id="telemetry-username" class="text-xs font-bold font-mono text-zinc-400">Syncing Node...</span>
+                <span id="telemetry-xp" class="text-[10px] text-emerald-400 font-mono">---- XP</span>
+            </div>
+            <div onclick="logout()" class="cursor-pointer w-10 h-10 bg-zinc-900 border border-zinc-800 rounded-2xl flex items-center justify-center text-zinc-400 hover:text-emerald-400 hover:border-emerald-500/30 transition-all duration-200">
+                👤
+            </div>
+        </div>
     </nav>
 
-    <!-- Main Dashboard Body Layout Matrix -->
-    <div class="max-w-6xl mx-auto px-6 py-12">
+    <div class="max-w-6xl mx-auto px-6 py-12 relative z-10">
         
-        <!-- Row 1: Hero Statistics Overview Container -->
-        <div class="bg-gradient-to-br from-zinc-900 to-black border border-emerald-500/20 rounded-3xl p-8 mb-8 flex flex-col md:flex-row justify-between items-start md:items-center gap-6 shadow-2xl">
-            <div>
-                <div class="flex items-center gap-3 mb-2">
-                    <h1 class="text-4xl font-bold">Welcome back, <span id="user-name" class="text-emerald-400">Agent</span>!</h1>
-                    <span id="account-tier" class="px-3 py-1 bg-emerald-500/10 border border-emerald-500/30 text-emerald-400 rounded-full text-xs font-mono tracking-widest font-bold uppercase">Pro Defense</span>
-                </div>
-                <p class="text-zinc-400">Your network security monitoring environment is active. No pending breaches detected.</p>
-            </div>
-            <div class="flex gap-4 w-full md:w-auto">
-                <div class="bg-zinc-900/60 border border-zinc-800 px-6 py-3 rounded-2xl text-center flex-1 md:flex-none min-w-[120px]">
-                    <div class="text-xs text-zinc-500 font-semibold tracking-wider uppercase mb-1">Active Streak</div>
-                    <div id="user-streak" class="text-2xl font-bold text-amber-500">🔥 -- Days</div>
-                </div>
-                <div class="bg-zinc-900/60 border border-zinc-800 px-6 py-3 rounded-2xl text-center flex-1 md:flex-none min-w-[120px]">
-                    <div class="text-xs text-zinc-500 font-semibold tracking-wider uppercase mb-1">Rank Status</div>
-                    <div id="user-rank" class="text-2xl font-bold text-emerald-400">Lvl --</div>
-                </div>
-            </div>
-        </div>
+        <script>
+            if (!localStorage.getItem("access")) {
+                window.location.href = "login.html";
+            }
+        </script>
 
-        <!-- Row 2: Level Progression Tracking Matrix -->
-        <div class="bg-zinc-900 border border-zinc-800 rounded-3xl p-8 mb-8">
-            <div class="flex justify-between items-center mb-3">
-                <span class="text-sm font-bold tracking-wide text-zinc-400">LEVEL EXP BALANCE TRACKER</span>
-                <span id="xp-display" class="text-sm font-bold font-mono text-emerald-400">-- / -- XP</span>
-            </div>
-            <div class="w-full bg-zinc-950 rounded-full h-4 overflow-hidden p-0.5 border border-zinc-800">
-                <div id="xp-progress-bar" class="bg-gradient-to-r from-emerald-500 via-teal-400 to-cyan-500 h-full rounded-full transition-all duration-700 shadow-[0_0_12px_rgba(52,211,153,0.3)]" style="width: 0%;"></div>
-            </div>
-        </div>
-
-        <!-- Row 3: Live Session Targets / Analytical Metrics -->
-        <div class="grid md:grid-cols-3 gap-6 mb-8">
-            <!-- Analytics Counter 1 -->
-            <div class="bg-zinc-900 border border-zinc-800 rounded-2xl p-6 flex items-center gap-4">
-                <div class="w-14 h-14 bg-emerald-500/10 border border-emerald-500/20 text-emerald-400 rounded-2xl text-2xl flex items-center justify-center">🎯</div>
+        <div class="glass-panel rounded-3xl p-8 mb-10 flex flex-col md:flex-row justify-between items-start md:items-center gap-6 shadow-2xl relative overflow-hidden">
+            <div class="absolute top-0 right-0 w-96 h-96 bg-gradient-to-bl from-emerald-500/5 to-transparent rounded-full pointer-events-none"></div>
+            
+            <div class="flex items-center gap-5">
+                <div class="w-16 h-16 rounded-2xl bg-zinc-900 border border-zinc-800 flex items-center justify-center text-3xl shadow-inner">
+                    🥷
+                </div>
                 <div>
-                    <div class="text-sm text-zinc-400">Missions Successfully Defended</div>
-                    <div id="sims-completed-count" class="text-2xl font-bold font-mono">--</div>
+                    <h2 class="text-3xl font-bold tracking-tight text-white flex items-center gap-3">
+                        Welcome Back, <span id="user-name" class="text-transparent bg-clip-text bg-gradient-to-r from-emerald-400 to-teal-300 font-mono">Agent</span>
+                    </h2>
+                    <p class="text-sm text-zinc-400 mt-1 font-mono tracking-wider">SECURE GRID STANDBY STATUS // ACTIVE OPERATOR</p>
                 </div>
             </div>
-            <!-- Analytics Counter 2 -->
-            <div class="bg-zinc-900 border border-zinc-800 rounded-2xl p-6 flex items-center gap-4">
-                <div class="w-14 h-14 bg-cyan-500/10 border border-cyan-500/20 text-cyan-400 rounded-2xl text-2xl flex items-center justify-center">⚡</div>
-                <div>
-                    <div class="text-sm text-zinc-400">Threat Vectors Analyzed</div>
-                    <div id="ai-queries-count" class="text-2xl font-bold font-mono">--</div>
+
+            <div class="flex flex-wrap gap-4 w-full md:w-auto">
+                <div class="flex-1 sm:flex-initial bg-zinc-950/60 border border-zinc-900 rounded-2xl px-5 py-3 min-w-[120px]">
+                    <span class="block text-[10px] font-mono tracking-widest text-zinc-500 uppercase">Current Tier</span>
+                    <span id="user-rank" class="text-lg font-bold font-mono text-emerald-400">Lvl --</span>
                 </div>
-            </div>
-            <!-- Analytics Counter 3: Operational Countdown Protocol -->
-            <div class="bg-zinc-900 border border-zinc-800 rounded-2xl p-6 flex items-center gap-4">
-                <div class="w-14 h-14 bg-amber-500/10 border border-amber-500/20 text-amber-500 rounded-2xl text-2xl flex items-center justify-center">⏳</div>
-                <div class="w-full">
-                    <div class="text-sm text-zinc-400">Daily Bonus Reset Protocol</div>
-                    <div id="countdown-timer" class="text-2xl font-bold font-mono text-amber-500">24:00:00</div>
+                <div class="flex-1 sm:flex-initial bg-zinc-950/60 border border-zinc-900 rounded-2xl px-5 py-3 min-w-[120px]">
+                    <span class="block text-[10px] font-mono tracking-widest text-zinc-500 uppercase">Operational Streak</span>
+                    <span id="user-streak" class="text-lg font-bold font-mono text-amber-500">🔥 -- Days</span>
                 </div>
             </div>
         </div>
 
-        <!-- Row 4: Achievement Badges & Security Training Activity Distribution Map -->
-        <div class="grid lg:grid-cols-3 gap-8 mb-8">
-            <!-- Dynamic Badges Locker Box (2-columns wide layout logic) -->
-            <div class="lg:col-span-2 bg-zinc-900 border border-zinc-800 rounded-3xl p-8">
-                <h3 class="text-xl font-bold mb-6 flex items-center gap-2">
-                    <span>🎖️</span> Earned Security Badges & Achievements
-                </h3>
-                <div class="grid grid-cols-2 sm:grid-cols-4 gap-4" id="badges-container">
-                    <!-- Standard dynamically-populated achievement badge cells logic placeholder -->
-                </div>
+        <div class="glass-panel rounded-2xl p-6 mb-12">
+            <div class="flex justify-between items-center text-sm mb-3">
+                <span class="font-mono text-xs text-zinc-400 tracking-wider">RANK REQUISITES GENERATION PROGRESSION</span>
+                <span id="xp-display" class="font-mono font-bold text-emerald-400">-- / -- XP</span>
             </div>
-
-            <!-- Activity Distribution Map Bar Block Chart using CSS semantic rules -->
-            <div class="bg-zinc-900 border border-zinc-800 rounded-3xl p-8">
-                <h3 class="text-xl font-bold mb-4 flex items-center gap-2">
-                    <span>📈</span> Weekly Activity Index
-                </h3>
-                <p class="text-zinc-400 text-xs mb-6">Metrics evaluate scanning request vectors mapped dynamically over historical operational trends.</p>
-                
-                <!-- Pure CSS Flex Container Graph -->
-                <div class="flex justify-between items-end h-32 px-2 pt-4 bg-zinc-950 rounded-2xl border border-zinc-800">
-                    <div class="flex flex-col items-center flex-1 gap-2"><div class="w-3 bg-emerald-500/40 hover:bg-emerald-400 transition-all rounded-t-sm h-[30%]"></div><span class="text-[10px] text-zinc-500">M</span></div>
-                    <div class="flex flex-col items-center flex-1 gap-2"><div class="w-3 bg-emerald-500/40 hover:bg-emerald-400 transition-all rounded-t-sm h-[55%]"></div><span class="text-[10px] text-zinc-500">T</span></div>
-                    <div class="flex flex-col items-center flex-1 gap-2"><div class="w-3 bg-emerald-500/40 hover:bg-emerald-400 transition-all rounded-t-sm h-[85%]"></div><span class="text-[10px] text-zinc-500">W</span></div>
-                    <div class="flex flex-col items-center flex-1 gap-2"><div class="w-3 bg-emerald-500 hover:bg-emerald-400 transition-all rounded-t-sm h-[95%] shadow-[0_0_8px_rgba(52,211,153,0.4)]"></div><span class="text-[10px] text-emerald-400 font-bold">T</span></div>
-                    <div class="flex flex-col items-center flex-1 gap-2"><div class="w-3 bg-emerald-500/40 hover:bg-emerald-400 transition-all rounded-t-sm h-[40%]"></div><span class="text-[10px] text-zinc-500">F</span></div>
-                    <div class="flex flex-col items-center flex-1 gap-2"><div class="w-3 bg-zinc-800 rounded-t-sm h-[10%]"></div><span class="text-[10px] text-zinc-500">S</span></div>
-                    <div class="flex flex-col items-center flex-1 gap-2"><div class="w-3 bg-zinc-800 rounded-t-sm h-[5%]"></div><span class="text-[10px] text-zinc-500">S</span></div>
-                </div>
+            <div class="w-full bg-zinc-950 h-3 rounded-full overflow-hidden border border-zinc-900/60">
+                <div id="xp-progress-bar" class="bg-gradient-to-r from-emerald-500 to-teal-400 h-full w-[0%] transition-all duration-1000 working-progress"></div>
             </div>
         </div>
 
-        <!-- Row 5: Lower Section split (Logs audit versus navigation recommendation arrays) -->
-        <div class="grid lg:grid-cols-3 gap-8">
-            <!-- Recent Auditable Mission Feeds Block -->
-            <div class="lg:col-span-2 bg-zinc-900 border border-zinc-800 rounded-3xl p-8">
-                <h3 class="text-xl font-bold mb-6 flex items-center gap-2">
-                    <span>📋</span> Live Incident Audit Log Streams
-                </h3>
-                <div id="activity-log-container" class="space-y-4">
-                    <p class="text-zinc-500 text-sm italic">Loading telemetry operations streams...</p>
-                </div>
-            </div>
+        <h3 class="text-xl font-bold title-font text-zinc-300 tracking-wide uppercase mb-6 flex items-center gap-3">
+            <span class="w-2 h-2 bg-emerald-500 rounded-full animate-ping"></span> Core Tactical Protection Systems
+        </h3>
 
-            <!-- Contextual Operational Tasks Upgrades Panels -->
-            <div class="bg-zinc-900 border border-zinc-800 rounded-3xl p-8 flex flex-col justify-between">
+        <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6 mb-12">
+            
+            <div class="glass-panel rounded-2xl p-6 border border-zinc-900 hover:border-emerald-500/20 card-hover flex flex-col justify-between">
                 <div>
-                    <h3 class="text-xl font-bold mb-4 flex items-center gap-2">
-                        <span>🚀</span> Recommended Defense Tasks
-                    </h3>
-                    <p class="text-zinc-400 text-sm mb-6">Automated routing configurations advise immediate training upgrades on these perimeter types:</p>
-                    
-                    <div class="space-y-3">
-                        <a href="simulations.html" class="block p-4 bg-zinc-950 hover:bg-zinc-800 rounded-xl border border-zinc-800 transition group">
-                            <div class="flex justify-between items-center">
-                                <span class="font-medium group-hover:text-emerald-400 transition">📱 Threat Sector #2: OTP Fraud</span>
-                                <span class="text-[10px] text-rose-400 font-mono bg-rose-950/40 px-2 py-0.5 rounded border border-rose-900">Critical</span>
-                            </div>
-                        </a>
-                        <a href="ai-detector.html" class="block p-4 bg-zinc-950 hover:bg-zinc-800 rounded-xl border border-zinc-800 transition group">
-                            <div class="flex justify-between items-center">
-                                <span class="font-medium group-hover:text-emerald-400 transition">🔍 Verify Malicious Endpoints</span>
-                                <span class="text-[10px] text-cyan-400 font-mono bg-cyan-950/40 px-2 py-0.5 rounded border border-cyan-900">AI Tool</span>
-                            </div>
-                        </a>
+                    <div class="flex justify-between items-start mb-4">
+                        <div class="w-12 h-12 rounded-xl bg-emerald-950/30 border border-emerald-900/40 flex items-center justify-center text-xl text-emerald-400">
+                            🔍
+                        </div>
+                        <span class="px-2.5 py-1 bg-emerald-500/10 border border-emerald-500/20 text-emerald-400 text-[10px] font-mono rounded-md font-bold uppercase tracking-wider">Live Scans</span>
                     </div>
+                    <h4 class="text-lg font-bold text-white mb-2 font-sans">AI Threat Detector</h4>
+                    <p class="text-sm text-zinc-400 leading-relaxed mb-6">Analyze suspicious message text payloads, spear-phishing parameters, and deceptive domain configurations using deep backend neural markers.</p>
                 </div>
-                
-                <a href="simulations.html" class="mt-8 text-center block w-full py-4 bg-emerald-500 hover:bg-emerald-400 text-black font-bold rounded-2xl transition shadow-lg shadow-emerald-500/10">
-                    Enter Threat Simulator Grid
+                <a href="ai-detector.html" class="w-full text-center py-3 bg-zinc-900 hover:bg-emerald-500 hover:text-black font-semibold text-sm text-zinc-300 rounded-xl transition-all duration-200 border border-zinc-800 hover:border-transparent">
+                    Open Terminal Gate
                 </a>
             </div>
+
+            <div class="glass-panel rounded-2xl p-6 border border-zinc-900 hover:border-emerald-500/20 card-hover flex flex-col justify-between">
+                <div>
+                    <div class="flex justify-between items-start mb-4">
+                        <div class="w-12 h-12 rounded-xl bg-cyan-950/30 border border-cyan-900/40 flex items-center justify-center text-xl text-cyan-400">
+                            🎮
+                        </div>
+                        <span class="px-2.5 py-1 bg-cyan-500/10 border border-cyan-500/20 text-cyan-400 text-[10px] font-mono rounded-md font-bold uppercase tracking-wider">Gamified Simulation</span>
+                    </div>
+                    <h4 class="text-lg font-bold text-white mb-2 font-sans">Threat Simulations</h4>
+                    <p class="text-sm text-zinc-400 leading-relaxed mb-6">Engage with zero-day vulnerability attack scripts inside a protected sandboxed emulator interface to earn telemetry XP credits securely.</p>
+                </div>
+                <a href="simulations.html" class="w-full text-center py-3 bg-zinc-900 hover:bg-cyan-500 hover:text-black font-semibold text-sm text-zinc-300 rounded-xl transition-all duration-200 border border-zinc-800 hover:border-transparent">
+                    Launch Emulation Node
+                </a>
+            </div>
+
+            <div class="glass-panel rounded-2xl p-6 border border-zinc-900 hover:border-emerald-500/20 card-hover flex flex-col justify-between md:col-span-2 lg:col-span-1">
+                <div>
+                    <div class="flex justify-between items-start mb-4">
+                        <div class="w-12 h-12 rounded-xl bg-purple-950/30 border border-purple-900/40 flex items-center justify-center text-xl text-purple-400">
+                            🏆
+                        </div>
+                        <span class="px-2.5 py-1 bg-purple-500/10 border border-purple-500/20 text-purple-400 text-[10px] font-mono rounded-md font-bold uppercase tracking-wider">Global Rankings</span>
+                    </div>
+                    <h4 class="text-lg font-bold text-white mb-2 font-sans">Global Leaderboard</h4>
+                    <p class="text-sm text-zinc-400 leading-relaxed mb-6">Compare defensive telemetry indexes and operational uptime streaks directly alongside top interceptor agents worldwide.</p>
+                </div>
+                <a href="leaderboard.html" class="w-full text-center py-3 bg-zinc-900 hover:bg-purple-500 hover:text-black font-semibold text-sm text-zinc-300 rounded-xl transition-all duration-200 border border-zinc-800 hover:border-transparent">
+                    View Matrix Rankings
+                </a>
+            </div>
+
+        </div>
+
+        <hr class="border-zinc-900 mb-12">
+
+        <div class="p-5 bg-zinc-950/60 border border-zinc-900 rounded-2xl flex items-center gap-4 text-xs text-zinc-500 font-mono leading-relaxed">
+            <span class="text-lg text-amber-500">⚠️</span>
+            <span><strong>OPERATIONAL NOTICE:</strong> Your unique authentication handshake token keys expire automatically under rotation constraints. If layout data fields display static mock placeholders, trigger a profile data check or sign in again to refresh your session state securely.</span>
         </div>
 
     </div>
 
     <script src="js/app.js"></script>
     <script>
-        // Core Config Mapping Object for Dynamic Badge rendering systems
-        const badgesConfig = [
-            { id: 'b1', name: 'Phishing Buster', desc: 'Identified fake links', criteria: 1, icon: '🎣' },
-            { id: 'b2', name: 'Fortress builder', desc: 'Secure alpha password', criteria: 3, icon: '🏰' },
-            { id: 'b3', name: 'Scam Vigilante', desc: 'Refused fraud call targets', criteria: 5, icon: '🕵️' },
-            { id: 'b4', name: 'Cyber Hero', desc: 'Level rank milestone 5', criteria: 10, icon: '👑' }
-        ];
-
-        // 1. Database Metric Pull Initializer Hook Routine
-        async function fetchDashboardMetrics() {
-            try {
-                const response = await fetch('/api/user/dashboard-data', {
-                    method: 'GET',
-                    headers: { 'Authorization': `Bearer ${localStorage.getItem('token')}` }
-                });
-
-                if (response.ok) {
-                    const data = await response.json();
-                    populateUI(data);
-                } else {
-                    useLocalSandboxFallback();
+        // Inline UI Lifecycle Sync Fallback
+        document.addEventListener("DOMContentLoaded", async () => {
+            const token = localStorage.getItem("access");
+            if (token && typeof authorizedFetch === "function") {
+                try {
+                    const res = await authorizedFetch("/profile/");
+                    if (res && res.ok) {
+                        const data = await res.json();
+                        // Smoothly transition away from native loading layout text
+                        if(document.getElementById("user-name")) document.getElementById("user-name").textContent = data.username;
+                        if(document.getElementById("user-rank")) document.getElementById("user-rank").textContent = `Lvl ${data.level || 1}`;
+                        if(document.getElementById("user-streak")) document.getElementById("user-streak").textContent = `🔥 ${data.streak || 0} Days`;
+                    }
+                } catch(e) {
+                    console.warn("Local profile synchronization pipeline busy. Retrying backdrop cycle...");
                 }
-            } catch (error) {
-                console.warn("Database engine interface offline. Standard fallbacks mounted.");
-                useLocalSandboxFallback();
             }
-        }
-
-        // 2. Data Parser Element Node Binder Route Mapping
-        function populateUI(data) {
-            document.getElementById('user-name').textContent = data.username || "Agent Soldier";
-            document.getElementById('user-streak').textContent = `🔥 ${data.streak || 0} Days`;
-            document.getElementById('sims-completed-count').textContent = data.completedSimulationsCount || 0;
-            document.getElementById('ai-queries-count').textContent = data.aiQueriesPerformed || 0;
-            
-            // Scaled Level Exponential Calculation Configurations
-            const currentXP = data.totalXp || 0;
-            const xpNeededForNextLevel = 1000; 
-            const currentLevel = Math.floor(currentXP / xpNeededForNextLevel) + 1;
-            const relativeXP = currentXP % xpNeededForNextLevel;
-            const progressPercentage = (relativeXP / xpNeededForNextLevel) * 100;
-
-            document.getElementById('user-rank').textContent = `Lvl ${currentLevel}`;
-            document.getElementById('xp-display').textContent = `${relativeXP} / ${xpNeededForNextLevel} XP`;
-            document.getElementById('xp-progress-bar').style.width = `${progressPercentage}%`;
-
-            renderBadgesGrid(data.completedSimulationsCount || 0);
-            renderActivityLogs(data.recentActivities || []);
-        }
-
-        // 3. Dynamic Badge State Unlocking Render Sequence Engine
-        function renderBadgesGrid(clearedCount) {
-            const container = document.getElementById('badges-container');
-            container.innerHTML = badgesConfig.map(badge => {
-                const isUnlocked = clearedCount >= badge.criteria;
-                return `
-                    <div class="p-4 rounded-2xl border text-center transition-all duration-300 ${isUnlocked ? 'bg-zinc-800/40 border-emerald-500/30' : 'bg-zinc-900/20 border-zinc-800 opacity-40'}" title="${badge.desc}">
-                        <div class="text-3xl mb-2 filter ${isUnlocked ? '' : 'grayscale'}">${badge.icon}</div>
-                        <div class="text-xs font-bold ${isUnlocked ? 'text-zinc-200' : 'text-zinc-500'}">${badge.name}</div>
-                        <div class="text-[10px] text-zinc-500 mt-1">${isUnlocked ? 'Unlocked ✅' : 'Locked 🔒'}</div>
-                    </div>
-                `;
-            }).join('');
-        }
-
-        // 4. Activity Logs Output Streams Processing Matrix
-        function renderActivityLogs(activities) {
-            const container = document.getElementById('activity-log-container');
-            if (!activities || activities.length === 0) {
-                container.innerHTML = `<p class="text-zinc-500 text-sm italic p-4">No logged operations stored on record arrays.</p>`;
-                return;
-            }
-
-            container.innerHTML = activities.map(item => `
-                <div class="flex justify-between items-center p-4 bg-zinc-950 border border-zinc-800 rounded-xl hover:border-zinc-700 transition">
-                    <div class="flex items-center gap-3">
-                        <span class="text-emerald-400">⚡</span>
-                        <div>
-                            <div class="text-sm font-medium text-zinc-300">${item.activityName}</div>
-                            <div class="text-[10px] text-zinc-500">${new Date(item.timestamp).toLocaleDateString()}</div>
-                        </div>
-                    </div>
-                    <div class="text-xs text-emerald-400 font-mono font-bold">+${item.xpEarned} XP</div>
-                </div>
-            `).join('');
-        }
-
-        // 5. Interface UI Countdown Clock Execution Function
-        function startCountdownClock() {
-            const timerEl = document.getElementById('countdown-timer');
-            let totalSeconds = 24 * 60 * 60; // 24-hour cycle setup parameters
-            
-            setInterval(() => {
-                if (totalSeconds <= 0) totalSeconds = 24 * 60 * 60;
-                totalSeconds--;
-                
-                const hrs = String(Math.floor(totalSeconds / 3600)).padStart(2, '0');
-                const mins = String(Math.floor((totalSeconds % 3600) / 60)).padStart(2, '0');
-                const secs = String(totalSeconds % 60).padStart(2, '0');
-                
-                timerEl.textContent = `${hrs}:${mins}:${secs}`;
-            }, 1000);
-        }
-
-        // 6. Runtime Local Sandbox Core Fallback Parameters
-        function useLocalSandboxFallback() {
-            const mockPayload = {
-                username: "Cyber Rakshak Warrior",
-                streak: 9,
-                totalXp: 3650,
-                completedSimulationsCount: 4,
-                aiQueriesPerformed: 18,
-                recentActivities: [
-                    { activityName: "Phishing Verification Incident Protocol Defended", xpEarned: 120, timestamp: new Date().toISOString() },
-                    { activityName: "Calculated Malicious Password Entropy Score", xpEarned: 80, timestamp: new Date(Date.now()-86400000).toISOString() }
-                ]
-            };
-            populateUI(mockPayload);
-        }
-
-        // Setup Event Triggers
-        window.onload = () => {
-            fetchDashboardMetrics();
-            startCountdownClock();
-        };
+        });
     </script>
 </body>
 </html>
